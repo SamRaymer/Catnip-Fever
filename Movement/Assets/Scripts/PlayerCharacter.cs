@@ -31,6 +31,15 @@ public class PlayerCharacter : MonoBehaviour
         handleMovement();
     }
 
+    void OnTriggerEnter2D (Collider2D other) {
+        if (other.CompareTag("Cat")) {
+            // SceneManager.LoadScene("SampleScene");
+            Debug.Log("I see cat");
+            
+        }
+    }
+
+
     private void handleMovement() {
 
         // Normalize movement direction
