@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
 
+    public GameObject RightCarPrefab;
+    public GameObject LeftCarPrefab;
 
     // Start is called before the first frame update
     void Start()
