@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
@@ -8,6 +9,7 @@ public class PauseGame : MonoBehaviour
     
     // We'll show paused when it's relevant
     public Text pausedText;
+    public Button thePauseButton;
 
     // Are we paused?
     bool isPaused = false;
@@ -18,6 +20,7 @@ public class PauseGame : MonoBehaviour
 
     private void Awake() {
         pausedText.text = "";
+        thePauseButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,6 +43,7 @@ public class PauseGame : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape)) {
             isPaused = !isPaused;
         }
+        thePauseButton.gameObject.SetActive(isPaused);
         if (isPaused) {
             Time.timeScale = 0;
             pausedText.text = "Paused";
