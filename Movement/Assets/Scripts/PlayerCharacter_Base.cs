@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerCharacter_Base : MonoBehaviour
 {
+
+    // Can control character
+    public bool canControl = true;
+
     // Start is called before the first frame update
     void Start()
     {
