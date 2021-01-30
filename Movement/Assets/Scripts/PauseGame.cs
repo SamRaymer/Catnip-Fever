@@ -21,6 +21,8 @@ public class PauseGame : MonoBehaviour
     private void Awake() {
         pausedText.text = "";
         thePauseButton.gameObject.SetActive(false);
+        pausedText.gameObject.SetActive(true);
+        
     }
 
     // Update is called once per frame
@@ -36,8 +38,6 @@ public class PauseGame : MonoBehaviour
          * What doesn't get stopped or affected
          * FixedUpdate() isn't called
          * Time IS stopped (yay the timer stops)
-         *
-         *
          */
 
         if (Input.GetKeyUp(KeyCode.Escape)) {
