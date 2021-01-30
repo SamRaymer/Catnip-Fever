@@ -11,7 +11,6 @@ public class QuitApp : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        Debug.Log(btnQuit);
         btnQuit.onClick.AddListener(DoExitGame);
     }
 

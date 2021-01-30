@@ -26,10 +26,19 @@ public class PlayerCharacter : MonoBehaviour
         playerCharacterBase = gameObject.GetComponent<PlayerCharacter_Base>();
     }
 
+    void OnTriggerEnter2D (Collider2D other) {
+        if (other.CompareTag("Cat")) {
+            Debug.Log("Touched a cat");
+        }
+    }
+
     // Update is called once per frame
-    private void Update()
-    {
+    private void Update() {
         handleMovement();
+    }
+
+    private void handleInteract() {
+
     }
 
     private void handleMovement()
