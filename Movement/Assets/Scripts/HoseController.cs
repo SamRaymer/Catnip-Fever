@@ -6,14 +6,13 @@ public class HoseController : MonoBehaviour
 {
     private PlayerStats playerStats;
     public GameObject catPrefab;
-    public GameObject eventSystem;
     GameTimer gameTimer;
     public float secondsBetweenSpawns = 3f;
     public float spawnTimer = 0f;
 
     void Start()
     {
-        gameTimer = eventSystem.GetComponent<GameTimer>();
+        gameTimer = transform.Find("Event System").GetComponent<GameTimer>();
     }
 
     // Update is called once per frame
