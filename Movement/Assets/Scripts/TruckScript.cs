@@ -11,6 +11,7 @@ public class TruckScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.transform.position = new Vector2(-6.27f, 19.99f);
         droptime = Time.time + 1;
     }
 

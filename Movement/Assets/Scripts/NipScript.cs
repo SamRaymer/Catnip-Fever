@@ -7,6 +7,10 @@ public class NipScript : MonoBehaviour
     public GameObject bluePrefab;
     public GameObject pinkPrefab;
     public GameObject greenPrefab;
+    public GameObject playerPrefab;
+    public GameObject Spawnmanager;
+    public GameObject MiniSpawnManager;
+    public SpawnManager s;
 
     private float t1;
     private float t2;
@@ -15,6 +19,7 @@ public class NipScript : MonoBehaviour
     private float t5;
     private float t6;
 
+    private float tplayer;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +30,12 @@ public class NipScript : MonoBehaviour
         t4 = Time.time + Random.Range(0.1f, 1f);
         t5 = Time.time + Random.Range(0.1f, 1f);
         t6 = Time.time + Random.Range(0.1f, 1f);
+
+        tplayer = Time.time + 2;
+
+        MiniSpawnManager = GameObject.Find("MiniSpawnManger");
+        Spawnmanager = GameObject.Find("SpawnManager");
+        s = Spawnmanager.GetComponent(typeof(SpawnManager)) as SpawnManager;
     }
 
     // Update is called once per frame
@@ -71,6 +82,14 @@ public class NipScript : MonoBehaviour
             GameObject a = Instantiate(pinkPrefab, new Vector2(-9.4f, 18f), new Quaternion(0f, 0f, 0f, 0f));
             CatController behavoir = a.GetComponent(typeof(CatController)) as CatController;
             behavoir.targetObject = this.gameObject;
+        }
+
+        if (Time.time > tplayer)
+        {
+            tplayer += 10000000;
+            Instantiate(playerPrefab, new Vector2(-9.4f, 13.8f), new Quaternion(0f, 0f, 0f, 0f));
+            MiniSpawnManager.SetActive(false);
+            s.Activate();
         }
     }
 }

@@ -145,6 +145,13 @@ public class PlayerCharacter : MonoBehaviour
         heldObject = null;
     }
 
+    public void ResetAnimationTriggers()
+    {
+        animator.ResetTrigger("Blue Cat");
+        animator.ResetTrigger("Green Cat");
+        animator.ResetTrigger("Pink Cat");
+    }
+
     public void HandleInteract()
     {
         if (!Input.GetKeyDown("space"))
@@ -160,19 +167,31 @@ public class PlayerCharacter : MonoBehaviour
 
         Debug.Log("Pickup?");
         Debug.Log(objectToPickUp);
-        if (!objectToPickUp)
-        {
+        if (!objectToPickUp) {
             return;
         }
-            heldObject = objectToPickUp;
-            objectToPickUp = null;
 
-            // Meow!
-            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+        heldObject = objectToPickUp;
+        CatController cat = heldObject.GetComponent<CatController>();
+        switch (cat.color) {
+            case CatColor.Blue:
+                animator.SetTrigger("Blue Cat");
+                break;
+            case CatColor.Pink:
+                animator.SetTrigger("Pink Cat");
+                break;
+            case CatColor.Green:
+                animator.SetTrigger("Green Cat");
+                break;
+        }
+        objectToPickUp = null;
 
-            heldObject.GetComponent<SpriteRenderer>().enabled = false;
-            heldObject.GetComponent<BoxCollider2D>().enabled = false;
-            heldCat = heldObject.GetComponent(typeof(CatController)) as CatController;
+        // Meow!
+        AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+
+        heldObject.GetComponent<SpriteRenderer>().enabled = false;
+        heldObject.GetComponent<BoxCollider2D>().enabled = false;
+        heldCat = heldObject.GetComponent(typeof(CatController)) as CatController;
     }
 
     public void HandleMove()

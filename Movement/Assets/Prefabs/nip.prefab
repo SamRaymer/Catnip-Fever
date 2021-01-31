@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8413827876282968151}
   - component: {fileID: 7061186046318480024}
   - component: {fileID: 2336123076761812826}
+  - component: {fileID: 1188516252761604062}
   m_Layer: 0
   m_Name: nip
   m_TagString: Untagged
@@ -112,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d1dec755fc6714f9f06fff04f35646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lifetime: 5
+  Lifetime: 3
 --- !u!50 &2336123076761812826
 Rigidbody2D:
   serializedVersion: 4
@@ -134,3 +135,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1188516252761604062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997723815646552867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3f53b36f80b3745bb82a23a4da2226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bluePrefab: {fileID: 479529633301404175, guid: 03563f6711474d8489744c87e4ff91c1,
+    type: 3}
+  pinkPrefab: {fileID: 930584360480115639, guid: ec2118004f92746feb65f8ec6b4822f7,
+    type: 3}
+  greenPrefab: {fileID: 181575757649362512, guid: 4f8b52aa7c62f49249167dab6fd153be,
+    type: 3}
+  playerPrefab: {fileID: 8895131855146017593, guid: f0a2b4ee7be57744599db6a2972bd62a,
+    type: 3}
+  SpawnmanagerPrebab: {fileID: 8487520575819740082, guid: 7009b56d08e72a648965ea3a88fbd1ab,
+    type: 3}
+  MiniSpawnManager: {fileID: 0}

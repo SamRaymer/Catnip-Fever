@@ -46,7 +46,7 @@ public class CatController : MonoBehaviour {
     public float velocity;
     public Vector2 target;
     public GameObject targetObject;
-    public float CloseEnough = 0.1f;
+    public float CloseEnough = 0.2f;
 
     private Vector2 ConstV;
     private Rigidbody2D rigidb;

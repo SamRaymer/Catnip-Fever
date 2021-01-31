@@ -53,6 +53,9 @@ public class SpawnManager : MonoBehaviour
     private int hoseSpawned = 0;
 
     private float timeadjust;
+
+    private int active = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,10 +70,15 @@ public class SpawnManager : MonoBehaviour
         NextSoccerSprinkle = Time.time + SoccerSprinkleStart;
         NextWater = Time.time + WaterStart;
 
-        timeadjust = Time.time;
 
         EventSystem1 = GameObject.Find("EventSystem");
         Scoreboard = EventSystem1.GetComponent(typeof(PlayerStats)) as PlayerStats;
+    }
+
+    public void Activate()
+    {
+        active = 1;
+        timeadjust = Time.time;
     }
 
     Vector3 ParkBorderGen()
@@ -98,6 +106,12 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (active == 0)
+        {
+            return;
+        }
+
+
         accelf = Mathf.Max(5 - Mathf.Floor( (Time.time - timeadjust) / 10), 1);
 
         // Spawn bikes and cars
