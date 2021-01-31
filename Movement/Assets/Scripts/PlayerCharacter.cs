@@ -125,18 +125,20 @@ public class PlayerCharacter : MonoBehaviour
                 heldCat.target = new Vector2(-9.3f, 11.27f);
                 heldCat.catMode = CatMode.SprintToHouse;
                 Scoreboard.catsReturned++;
+                StaticClass.theScore = Scoreboard.catsReturned;
             }
             if (currentDropZone.name == "RedZone" && heldCat.color == CatColor.Pink)
             {
                 heldCat.target = new Vector2(-9.4f, 18f);
                 heldCat.catMode = CatMode.SprintToHouse;
-                Scoreboard.catsReturned++;
+                StaticClass.theScore = Scoreboard.catsReturned;
             }
             if (currentDropZone.name == "GreenZone" && heldCat.color == CatColor.Green)
             {
                 heldCat.target = new Vector2(-9.43f, 14.8f);
                 heldCat.catMode = CatMode.SprintToHouse;
                 Scoreboard.catsReturned++;
+                StaticClass.theScore = Scoreboard.catsReturned;
             }
         }
 
