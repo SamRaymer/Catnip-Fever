@@ -16,7 +16,7 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(StaticClass.theScore);
     }
 
     public void catWasReturned(int value) {

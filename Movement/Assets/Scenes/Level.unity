@@ -3360,7 +3360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeRemaining: 60
-  timerIsRunning: 0
+  timerIsRunning: 1
   timeText: {fileID: 1945391812}
 --- !u!212 &1477346477
 SpriteRenderer:
