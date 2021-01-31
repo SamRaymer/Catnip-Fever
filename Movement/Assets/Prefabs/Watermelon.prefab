@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6054006224019388971}
   - component: {fileID: 7296332767990565391}
   - component: {fileID: 1486072512432524721}
+  - component: {fileID: 5832211226972272971}
   m_Layer: 0
   m_Name: Watermelon
   m_TagString: Enemy
@@ -153,4 +154,16 @@ MonoBehaviour:
     type: 3}
   ShootTime: 0
   nextShot: 0
-  v: 0
+--- !u!114 &5832211226972272971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6054006224019388967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7999e94dd5fb402b98609701ba27698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: 1

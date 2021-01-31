@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8393675266701091747}
   - component: {fileID: 8393675266701091744}
   - component: {fileID: 3633692210635488871}
+  - component: {fileID: 1622644082799241784}
   m_Layer: 0
   m_Name: BikeUp
   m_TagString: Enemy
@@ -146,3 +147,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1622644082799241784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8393675266701091745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7999e94dd5fb402b98609701ba27698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: 1
