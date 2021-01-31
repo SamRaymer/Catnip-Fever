@@ -139,6 +139,6 @@ public class CatWanders : MonoBehaviour {
 
         */
 
-        animator.SetFloat("Speed", velocity);
+        animator.SetFloat("Speed", rigidb.velocity.magnitude);
     }
 }
