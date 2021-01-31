@@ -9,6 +9,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject DownCarPrefab;
     public GameObject UpBikePrefab;
     public GameObject DownBikePrefab;
+    public GameObject SoccerPrefab;
 
     public float NextLDBike;
     public float NextLUBike;
@@ -16,9 +17,13 @@ public class SpawnManager : MonoBehaviour
     public float NextUCar;
     public float NextRDBike;
     public float NextRUBike;
+    public float NextSoccer;
 
     public float BikeInterval = 2.0f;
     public float CarInterval = 2.0f;
+    public float SoccerInterval = 0.5f;
+
+    public float SoccerBallStart = 1f;
 
     private Vector3 LDBikeSpawn = new Vector3(-7.9f,20f,0f);
     private Vector3 LUBikeSpawn = new Vector3(-7.63f,8f,0f);
@@ -27,6 +32,10 @@ public class SpawnManager : MonoBehaviour
     private Vector3 RDBikeSpawn = new Vector3(-3.69f,20f,0f);
     private Vector3 RUBikeSpawn = new Vector3(-3.34f,8f,0f);
 
+    private float ParkboundL = -3f;
+    private float ParkboundR = 6f;
+    private float ParkboundU = 19f;
+    private float ParkboundB = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +46,31 @@ public class SpawnManager : MonoBehaviour
         NextUCar =   Time.time + CarInterval * (1 + Random.Range(0, 1));
         NextRDBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
         NextRUBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
-}
+
+        NextSoccer = Time.time + SoccerBallStart;
+    }
+
+    Vector3 ParkBorderGen()
+    {
+        float a = Random.Range(0f, 3f);
+
+        // Top
+        if (a < 1)
+        {
+            return new Vector3(Random.Range(ParkboundL, ParkboundR), ParkboundU + 1, 0f);
+        }
+        // Right
+        else if (a < 2)
+        {
+            return new Vector3(ParkboundR + 1, Random.Range(ParkboundB, ParkboundU), 0f);
+        }
+        // Bot
+        else
+        {
+            return new Vector3(Random.Range(ParkboundL, ParkboundR), ParkboundB - 1, 0f);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -72,6 +105,19 @@ public class SpawnManager : MonoBehaviour
         {
             NextRUBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
             Instantiate(UpBikePrefab, RUBikeSpawn, new Quaternion(0f, 0f, 0f, 0f));
+        }
+
+        // Soccerballs
+        if (Time.time > NextSoccer)
+        {
+            NextSoccer = Time.time + SoccerInterval * (1 + Random.Range(0, 1));
+            Vector3 Spawnpoint = ParkBorderGen();
+            GameObject a = Instantiate(SoccerPrefab, Spawnpoint, new Quaternion(0f, 0f, 0f, 0f));
+            ProjectileBehavoir behavoir = a.GetComponent(typeof(ProjectileBehavoir)) as ProjectileBehavoir;
+            behavoir.rotation = Random.Range(30f, 250f);
+            behavoir.direction = Random.Range(0f, 360f);
+            a.transform.Rotate(0, 0, Random.Range(0f, 360f));
+            behavoir.velocity = 3f;
         }
     }
 }
