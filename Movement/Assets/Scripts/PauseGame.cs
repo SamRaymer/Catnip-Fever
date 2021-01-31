@@ -15,13 +15,9 @@ public class PauseGame : MonoBehaviour
     bool isPaused = false;
 
     private void Start() {
-        pausedText = GameObject.Find("PausedText").GetComponent<Text>();
     }
     private void Awake() {
-        pausedText.text = "";
-        thePauseButton.gameObject.SetActive(false);
-        pausedText.gameObject.SetActive(true);
-        
+        // thePauseButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,14 +38,15 @@ public class PauseGame : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape)) {
             isPaused = !isPaused;
         }
-        thePauseButton.gameObject.SetActive(isPaused);
+        // thePauseButton.gameObject.SetActive(isPaused);
         if (isPaused) {
             Time.timeScale = 0;
-            pausedText.text = "Paused";
+            pausedText.gameObject.SetActive(true);
             // Pause audio
             AudioListener.pause = true;
         } else {
             Time.timeScale = 1;
+            pausedText.gameObject.SetActive(false);
             pausedText.text = "";
             // Resume audio
             AudioListener.pause = false;

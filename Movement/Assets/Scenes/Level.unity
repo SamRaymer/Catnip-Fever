@@ -1330,7 +1330,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Paused?
+  m_Text: Paused
 --- !u!222 &1011041617
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1981,7 +1981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a13d62929608eb469af447679d574d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausedText: {fileID: 0}
+  pausedText: {fileID: 1011041616}
   thePauseButton: {fileID: 0}
 --- !u!114 &1410588603
 MonoBehaviour:
