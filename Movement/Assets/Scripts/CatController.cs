@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 
 [System.Serializable]
 public enum CatMode {
+    Midair,
     Wander,
     SprintToLocation,
     SprintToHouse,
@@ -42,7 +43,7 @@ public class ColorAnimatorEntry {
 public class CatController : MonoBehaviour {
 
     public CatColor color = CatColor.Green;
-    public CatMode catMode = CatMode.Wander;  // 1 = wander, 2 = sprint to location, 3 = sprint to house
+    public CatMode catMode = CatMode.Midair;
     public ColorAnimatorEntry[] animators = ColorAnimatorEntry.GetEntriesWithoutAnimators();
 
     // How far to randomly go
@@ -61,6 +62,7 @@ public class CatController : MonoBehaviour {
 
     private int newDir;
 
+    public float velocityFly = 10f;
     public float velocityRun = 5f;
     public float velocityWalk = 1f;
 
@@ -86,10 +88,16 @@ public class CatController : MonoBehaviour {
         cat = this.gameObject;
         animator = GetComponent<Animator>();
 
-        if (catMode != CatMode.SprintToHouse && (this.transform.position.x < ParkboundL || this.transform.position.x > ParkboundR || this.transform.position.y < ParkboundB || this.transform.position.y > ParkboundU))
+        if (catMode == CatMode.Wander && (this.transform.position.x < ParkboundL || this.transform.position.x > ParkboundR || this.transform.position.y < ParkboundB || this.transform.position.y > ParkboundU))
         {
             velocity = velocityRun;
-            target = ParkTargetGen();
+            target = GetRandomPointInPark();
+        }
+
+        if (catMode == CatMode.Midair)
+        {
+            velocity = velocityFly;
+            target = GetRandomPointInPark();
         }
         
         if (catMode == CatMode.SprintToHouse)
@@ -98,7 +106,7 @@ public class CatController : MonoBehaviour {
         }
     }
 
-    Vector2 ParkTargetGen()
+    Vector2 GetRandomPointInPark()
     {
         return new Vector2(Random.Range(ParkboundL, ParkboundR), Random.Range(ParkboundB, ParkboundU));
     }
@@ -106,6 +114,7 @@ public class CatController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
         if (targetObject != null)
         {
             direction = new Vector2(targetObject.transform.position.x - this.transform.position.x, targetObject.transform.position.y - this.transform.position.y);
@@ -114,7 +123,7 @@ public class CatController : MonoBehaviour {
         {
             if (target == null || target == new Vector2(0, 0))
             {
-                target = ParkTargetGen();
+                target = GetRandomPointInPark();
             }
             direction = target - new Vector2(this.transform.position.x, this.transform.position.y);
         }
@@ -125,38 +134,18 @@ public class CatController : MonoBehaviour {
             {
                 velocity = velocityWalk;
                 catMode = CatMode.Wander;
-                target = ParkTargetGen();
+                target = GetRandomPointInPark();
             }
             else if (catMode == CatMode.SprintToHouse)
-            { Destroy(this.gameObject); }
+            { 
+                Destroy(this.gameObject); 
+            }
         }
 
         ConstV = new Vector2(Mathf.Cos(Mathf.Atan2(direction.y, direction.x)), Mathf.Sin(Mathf.Atan2(direction.y, direction.x))) * velocity;
 
         rigidb.velocity = ConstV;
 
-        /*else
-        {
-            timer -= Time.deltaTime;
-
-            //  Keep going!
-            if (timer > 0)
-            {
-                if (Math.Round(timer, 0) % wanderInterval == 0)
-                {
-                    //
-                    timer = timer - 1;
-                    //
-                    moveCat();
-                }
-            }
-            else
-            {
-                timer = 0;
-            }
-        }
-
-        */
 
         animator.SetFloat("Speed", rigidb.velocity.magnitude);
     }
