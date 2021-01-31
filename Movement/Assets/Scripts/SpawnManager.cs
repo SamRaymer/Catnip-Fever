@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public float accelf;
+    public float accelf2;
 
     public GameObject UpCarPrefab;
     public GameObject DownCarPrefab;
@@ -19,6 +20,7 @@ public class SpawnManager : MonoBehaviour
     public float WaterInterval = 2.0f;
 
     public float SoccerBallStart = 1f;
+    public float SoccerSprinkleStart = 10f;
     public float WaterStart = 1f;
 
     private Vector3 LDBikeSpawn = new Vector3(-7.9f,20f,0f);
@@ -40,6 +42,7 @@ public class SpawnManager : MonoBehaviour
     private float NextRDBike;
     private float NextRUBike;
     private float NextSoccer;
+    private float NextSoccerSprinkle;
     private float NextWater;
 
     // Start is called before the first frame update
@@ -53,6 +56,7 @@ public class SpawnManager : MonoBehaviour
         NextRUBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
 
         NextSoccer = Time.time + SoccerBallStart;
+        NextSoccerSprinkle = Time.time + SoccerSprinkleStart;
         NextWater = Time.time + WaterStart;
     }
 
@@ -81,10 +85,10 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        accelf = 2;//Mathf.Max(5 - Mathf.Floor(Time.time / 10), 1);
+        accelf = Mathf.Max(5 - Mathf.Floor(Time.time / 10), 1);
 
         // Spawn bikes and cars
-        if(Time.time > NextLDBike)
+        if (Time.time > NextLDBike)
         {
             NextLDBike = Time.time + BikeInterval * (1 + Random.Range(0f, accelf));
             Instantiate(DownBikePrefab, LDBikeSpawn, new Quaternion(0f, 0f, 0f, 0f));
@@ -127,11 +131,22 @@ public class SpawnManager : MonoBehaviour
             a.transform.Rotate(0f, 0f, Random.Range(0f, 360f));
             behavoir.velocity = 3f;
         }
+        if (Time.time > NextSoccerSprinkle)
+        {
+            NextSoccerSprinkle = Time.time + 3;
+            Vector3 Spawnpoint = ParkBorderGen();
+            GameObject a = Instantiate(SoccerPrefab, Spawnpoint, new Quaternion(0f, 0f, 0f, 0f));
+            ProjectileBehavoir behavoir = a.GetComponent(typeof(ProjectileBehavoir)) as ProjectileBehavoir;
+            behavoir.rotation = Random.Range(30f, 250f);
+            behavoir.direction = Random.Range(0f, 360f);
+            a.transform.Rotate(0f, 0f, Random.Range(0f, 360f));
+            behavoir.velocity = 3f;
+        }
 
         // Watermelons
         if (Time.time > NextWater)
         {
-            NextWater = Time.time + WaterInterval * (1 + Random.Range(0f, 1f));
+            NextWater = Time.time + WaterInterval * (1 + Random.Range(0f, accelf));
             Vector3 Spawnpoint = ParkBorderGen();
             GameObject a = Instantiate(WaterPrefab, Spawnpoint, new Quaternion(0f, 0f, 0f, 0f));
             ProjectileBehavoir behavoir = a.GetComponent(typeof(ProjectileBehavoir)) as ProjectileBehavoir;

@@ -964,6 +964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accelf: 0
+  accelf2: 0
   UpCarPrefab: {fileID: 4591910563393229366, guid: c1c30399d343a1546a65749f3a839638,
     type: 3}
   DownCarPrefab: {fileID: 6806179923766978647, guid: 9266339d92814754ea3dc0acfc0e9e1f,
@@ -980,8 +981,9 @@ MonoBehaviour:
   CarInterval: 0.4
   SoccerInterval: 0.1
   WaterInterval: 2
-  SoccerBallStart: 1
-  WaterStart: 1
+  SoccerBallStart: 10
+  SoccerSprinkleStart: 5
+  WaterStart: 30
 --- !u!4 &579874946
 Transform:
   m_ObjectHideFlags: 0
