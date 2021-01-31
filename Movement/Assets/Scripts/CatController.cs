@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.Animations;
 using System;
 using System.Collections;
 using UnityEngine.AI;
@@ -11,11 +12,38 @@ public enum CatMode {
     SprintToLocation,
     SprintToHouse,
 }
- 
-public class CatWanders : MonoBehaviour {
 
-    public int color;
+[System.Serializable]
+public enum CatColor {
+    Pink, Green, Blue
+}
+
+[System.Serializable]
+public class ColorAnimatorEntry {
+    public CatColor color;
+    public AnimatorController animator;
+
+    public static ColorAnimatorEntry[] GetEntriesWithoutAnimators()
+    {
+        return new ColorAnimatorEntry[] {
+            new ColorAnimatorEntry{
+                color = CatColor.Blue
+            },
+            new ColorAnimatorEntry{
+                color = CatColor.Green
+            },
+            new ColorAnimatorEntry{
+                color = CatColor.Pink
+            }
+        };
+    }
+}
+ 
+public class CatController : MonoBehaviour {
+
+    public CatColor color = CatColor.Green;
     public CatMode catMode = CatMode.Wander;  // 1 = wander, 2 = sprint to location, 3 = sprint to house
+    public ColorAnimatorEntry[] animators = ColorAnimatorEntry.GetEntriesWithoutAnimators();
 
     // How far to randomly go
     public float wanderRadius;
@@ -29,7 +57,6 @@ public class CatWanders : MonoBehaviour {
     // Keep track
     private float timer;
 
-    //
     private GameObject cat;
 
     private int newDir;
@@ -46,7 +73,6 @@ public class CatWanders : MonoBehaviour {
     private Rigidbody2D rigidb;
     private Vector2 direction;
     private Animator animator;
-
 
     private float ParkboundL = -3f;
     private float ParkboundR = 6f;
@@ -71,7 +97,6 @@ public class CatWanders : MonoBehaviour {
         {
             velocity = velocityRun;
         }
-
     }
 
     Vector2 ParkTargetGen()

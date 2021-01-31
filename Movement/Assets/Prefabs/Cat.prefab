@@ -125,6 +125,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 0
   catMode: 0
+  animators:
+  - color: 2
+    animator: {fileID: 9100000, guid: 542352acead1346ac9e9261d45ad3e68, type: 2}
+  - color: 1
+    animator: {fileID: 9100000, guid: 555c7d99700b142699f9330b7626b549, type: 2}
+  - color: 0
+    animator: {fileID: 9100000, guid: 744f28abeb68745d9801a596858dc0bf, type: 2}
   wanderRadius: 1.95
   wanderTimer: 60
   wanderInterval: 2
