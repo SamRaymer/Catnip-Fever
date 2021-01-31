@@ -10,6 +10,8 @@ public class PlayerCharacter : MonoBehaviour
     private PlayerCharacter_Base playerCharacterBase;
     private Vector2 movement = Vector2.zero;
     private Vector2 spawnPosition;
+    private float frozenTime = 0f;
+    private readonly float FREEZE_SECONDS = 2f;
 
     // Keep track of movement
     private Vector2 lastMoveDir;
@@ -51,7 +53,21 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            transform.position = spawnPosition;
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy == null)
+            {
+                return;
+            }
+
+            switch (enemy.effect)
+            {
+                case Effect.Reset:
+                    transform.position = spawnPosition;
+                    return;
+                case Effect.Stun:
+                    frozenTime = FREEZE_SECONDS;
+                    return;
+            }
         }
     }
 
@@ -63,8 +79,22 @@ public class PlayerCharacter : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (frozenTime > 0f) {
+            movement = Vector2.zero;
+            return;
+        }
+
         movement = context.ReadValue<Vector2>().normalized;
     }
+
+    public void Update()
+    {
+        if (frozenTime > 0f)
+        {
+            frozenTime -= Time.deltaTime;
+        }
+    }
+
     private void FixedUpdate()
     {
         Vector2 delta = movement * speed;
