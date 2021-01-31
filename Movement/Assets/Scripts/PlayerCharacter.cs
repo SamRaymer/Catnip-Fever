@@ -7,9 +7,11 @@ public class PlayerCharacter : MonoBehaviour
 
     // Character
     private PlayerCharacter_Base playerCharacterBase;
+    private Vector2 movement = Vector2.zero;
 
     // Keep track of movement
-    private Vector3 lastMoveDir;
+    private Vector2 lastMoveDir;
+    private Rigidbody2D rigidBody;
     private GameObject pickupZone;
     public GameObject objectToPickUp;
 
@@ -20,6 +22,7 @@ public class PlayerCharacter : MonoBehaviour
     void Start()
     {
         pickupZone = transform.Find("PickupZone").gameObject;
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     private void Awake()
@@ -61,80 +64,11 @@ public class PlayerCharacter : MonoBehaviour
 
     private void handleMovement()
     {
+        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+    }
 
-        // Normalize movement direction
-        float moveX = 0f;
-        float moveY = 0f;
-
-        /**
-         * Move multiple directions
-         * (Introduce else for one at a time)
-         */
-        if (Input.GetKey(KeyCode.W))
-        {
-            moveY = 1f;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            moveY = -1f;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveX = -1f;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveX = 1f;
-        }
-
-        // NOT moving
-        bool isIdle = moveX == 0 && moveY == 0;
-
-        // Rig in idle animations for later (if needed)
-        if (isIdle)
-        {
-            playerCharacterBase.PlayIdleAnimation(lastMoveDir);
-        }
-        else
-        {
-            // Vectors are (x, y)
-
-            // (`normalized` to prevent diagonal acceleration)
-            Vector3 moveDirection = new Vector3(moveX, moveY).normalized;
-
-            // Save last movement
-            lastMoveDir = moveDirection;
-
-            // Animate walking
-            playerCharacterBase.PlayWalkingAnimation(moveDirection);
-
-            // Predict where moving for hitboxes
-            Vector3 targetMovePosition = transform.position + moveDirection * speed * Time.deltaTime;
-            RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, moveDirection, speed * Time.deltaTime);
-
-            // Move, no collision
-            if (raycastHit.collider == null)
-            {
-                transform.position = targetMovePosition;
-            }
-            else
-            {
-                Vector3 testMoveDir = moveDirection.normalized;
-
-                // We're GOING to be here
-                targetMovePosition = transform.position + testMoveDir * speed * Time.deltaTime;
-
-                lastMoveDir = testMoveDir;
-                playerCharacterBase.PlayWalkingAnimation(moveDirection);
-                transform.position = targetMovePosition;
-
-                // Idle
-                playerCharacterBase.PlayIdleAnimation(lastMoveDir);
-            }
-
-
-
-        }
-
+    private void FixedUpdate() {
+        Vector2 delta = movement * speed;
+        rigidBody.MovePosition(rigidBody.position + delta);
     }
 }
