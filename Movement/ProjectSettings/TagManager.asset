@@ -7,6 +7,8 @@ TagManager:
   - Cat
   - House
   - Wall
+  - Enemy
+  - DropZone
   layers:
   - Default
   - TransparentFX

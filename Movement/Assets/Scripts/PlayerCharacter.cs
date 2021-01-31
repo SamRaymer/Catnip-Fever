@@ -92,10 +92,24 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 
+    private void DropCat()
+    {
+        heldObject = null;
+    }
+
     public void HandleInteract()
     {
         if (!Input.GetKeyDown("space"))
         {
+            return;
+        }
+
+        if (heldObject != null)
+        {
+            if (currentDropZone != null)
+            {
+                DropCat();
+            }
             return;
         }
 
