@@ -4,11 +4,18 @@ using System;
 using System.Collections;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+
+[System.Serializable]
+public enum CatMode {
+    Wander,
+    SprintToLocation,
+    SprintToHouse,
+}
  
 public class CatWanders : MonoBehaviour {
 
     public int color;
-    public int CatMode = 1;  // 1 = wander, 2 = sprint to location, 3 = sprint to house
+    public CatMode catMode = CatMode.Wander;  // 1 = wander, 2 = sprint to location, 3 = sprint to house
 
     // How far to randomly go
     public float wanderRadius;
@@ -38,6 +45,7 @@ public class CatWanders : MonoBehaviour {
     private Vector2 ConstV;
     private Rigidbody2D rigidb;
     private Vector2 direction;
+    private Animator animator;
 
 
     private float ParkboundL = -3f;
@@ -50,15 +58,16 @@ public class CatWanders : MonoBehaviour {
         rigidb = gameObject.GetComponent(typeof(Rigidbody2D)) as Rigidbody2D;
         timer = wanderTimer;
         cat = this.gameObject;
+        animator = GetComponent<Animator>();
         // Debug.Log(cat.position);
 
-        if (CatMode != 3 && (this.transform.position.x < ParkboundL || this.transform.position.x > ParkboundR || this.transform.position.y < ParkboundB || this.transform.position.y < ParkboundU))
+        if (catMode != CatMode.SprintToHouse && (this.transform.position.x < ParkboundL || this.transform.position.x > ParkboundR || this.transform.position.y < ParkboundB || this.transform.position.y < ParkboundU))
         {
             velocity = velocityRun;
             target = ParkTargetGen();
         }
         
-        if (CatMode == 3)
+        if (catMode == CatMode.SprintToHouse)
         {
             velocity = velocityRun;
         }
@@ -90,13 +99,13 @@ public class CatWanders : MonoBehaviour {
 
         if (Mathf.Sqrt(direction.x * direction.x + direction.y * direction.y) < CloseEnough)
         {
-            if (CatMode != 3)
+            if (catMode != CatMode.SprintToHouse)
             {
                 velocity = velocityWalk;
-                CatMode = 1;
+                catMode = CatMode.Wander;
                 target = ParkTargetGen();
             }
-            else if (CatMode == 3)
+            else if (catMode == CatMode.SprintToHouse)
             { Destroy(this.gameObject); }
         }
 
@@ -129,5 +138,7 @@ public class CatWanders : MonoBehaviour {
         }
 
         */
+
+        animator.SetFloat("Speed", velocity);
     }
 }
