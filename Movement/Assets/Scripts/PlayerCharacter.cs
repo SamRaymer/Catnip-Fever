@@ -16,6 +16,9 @@ public class PlayerCharacter : MonoBehaviour
     private float frozenTime = 0f;
     private readonly float FREEZE_SECONDS = 2f;
 
+    public GameObject EventSystem1;
+    public PlayerStats Scoreboard;
+
     // Keep track of movement
     private Vector2 lastMoveDir;
     private Rigidbody2D rigidBody;
@@ -25,6 +28,8 @@ public class PlayerCharacter : MonoBehaviour
     public GameObject heldObject;
     public DropZone currentDropZone;
     private Animator animator;
+
+    private CatController heldCat;
 
     // Base speed
     public float speed = 10f;
@@ -37,6 +42,8 @@ public class PlayerCharacter : MonoBehaviour
         spawnPosition = transform.position;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        EventSystem1 = GameObject.Find("EventSystem");
+        Scoreboard = EventSystem1.GetComponent(typeof(PlayerStats)) as PlayerStats;
     }
 
     private void Awake()
@@ -94,6 +101,21 @@ public class PlayerCharacter : MonoBehaviour
 
     private void DropCat()
     {
+        heldObject.transform.position = this.transform.position;
+        heldObject.GetComponent<SpriteRenderer>().enabled = true;
+        heldObject.GetComponent<BoxCollider2D>().enabled = true;
+
+        heldCat.velocity = heldCat.velocityRun;
+
+        heldCat.target = new Vector2(0, 0);
+
+        if (currentDropZone.name == "BlueZone" && heldCat.color == CatColor.Blue)
+        {
+            heldCat.target = new Vector2(-9.3f, 11.27f);
+            heldCat.catMode = CatMode.SprintToHouse;
+            Scoreboard.catsReturned++;
+        }
+
         heldObject = null;
     }
 
@@ -106,10 +128,7 @@ public class PlayerCharacter : MonoBehaviour
 
         if (heldObject != null)
         {
-            if (currentDropZone != null)
-            {
-                DropCat();
-            }
+            DropCat();
             return;
         }
 
@@ -127,6 +146,7 @@ public class PlayerCharacter : MonoBehaviour
 
             heldObject.GetComponent<SpriteRenderer>().enabled = false;
             heldObject.GetComponent<BoxCollider2D>().enabled = false;
+            heldCat = heldObject.GetComponent(typeof(CatController)) as CatController;
     }
 
     public void HandleMove()
