@@ -10,20 +10,15 @@ public class SpawnManager : MonoBehaviour
     public GameObject UpBikePrefab;
     public GameObject DownBikePrefab;
     public GameObject SoccerPrefab;
-
-    public float NextLDBike;
-    public float NextLUBike;
-    public float NextDCar;
-    public float NextUCar;
-    public float NextRDBike;
-    public float NextRUBike;
-    public float NextSoccer;
+    public GameObject WaterPrefab;
 
     public float BikeInterval = 2.0f;
     public float CarInterval = 2.0f;
     public float SoccerInterval = 0.5f;
+    public float WaterInterval = 2.0f;
 
     public float SoccerBallStart = 1f;
+    public float WaterStart = 1f;
 
     private Vector3 LDBikeSpawn = new Vector3(-7.9f,20f,0f);
     private Vector3 LUBikeSpawn = new Vector3(-7.63f,8f,0f);
@@ -37,6 +32,15 @@ public class SpawnManager : MonoBehaviour
     private float ParkboundU = 19f;
     private float ParkboundB = 10f;
 
+    public float NextLDBike;
+    public float NextLUBike;
+    public float NextDCar;
+    public float NextUCar;
+    public float NextRDBike;
+    public float NextRUBike;
+    public float NextSoccer;
+    public float NextWater;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +52,7 @@ public class SpawnManager : MonoBehaviour
         NextRUBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
 
         NextSoccer = Time.time + SoccerBallStart;
+        NextWater = Time.time + WaterStart;
     }
 
     Vector3 ParkBorderGen()
@@ -118,6 +123,19 @@ public class SpawnManager : MonoBehaviour
             behavoir.direction = Random.Range(0f, 360f);
             a.transform.Rotate(0, 0, Random.Range(0f, 360f));
             behavoir.velocity = 3f;
+        }
+
+        // Watermelons
+        if (Time.time > NextWater)
+        {
+            NextWater = Time.time + WaterInterval * (1 + Random.Range(0, 1));
+            Vector3 Spawnpoint = ParkBorderGen();
+            GameObject a = Instantiate(WaterPrefab, Spawnpoint, new Quaternion(0f, 0f, 0f, 0f));
+            ProjectileBehavoir behavoir = a.GetComponent(typeof(ProjectileBehavoir)) as ProjectileBehavoir;
+            behavoir.rotation = Random.Range(30f, 250f);
+            behavoir.direction = Random.Range(0f, 360f);
+            a.transform.Rotate(0, 0, Random.Range(0f, 360f));
+            behavoir.velocity = Random.Range(1f,4f);
         }
     }
 }

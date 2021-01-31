@@ -824,6 +824,14 @@ MonoBehaviour:
     type: 3}
   SoccerPrefab: {fileID: 4655509829269637956, guid: d9722cb0b13c9744d872ad7c596345da,
     type: 3}
+  WaterPrefab: {fileID: 6054006224019388967, guid: 723809a7432c45f44909ae2d4fb3001d,
+    type: 3}
+  BikeInterval: 2
+  CarInterval: 2
+  SoccerInterval: 0.2
+  WaterInterval: 2
+  SoccerBallStart: 1
+  WaterStart: 1
   NextLDBike: 0
   NextLUBike: 0
   NextDCar: 0
@@ -831,10 +839,7 @@ MonoBehaviour:
   NextRDBike: 0
   NextRUBike: 0
   NextSoccer: 0
-  BikeInterval: 2
-  CarInterval: 2
-  SoccerInterval: 0.2
-  SoccerBallStart: 1
+  NextWater: 0
 --- !u!4 &579874946
 Transform:
   m_ObjectHideFlags: 0
