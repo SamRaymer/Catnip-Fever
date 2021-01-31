@@ -14,7 +14,9 @@ public class PlayerCharacter : MonoBehaviour
     private Vector2 movement = Vector2.zero;
     private Vector2 spawnPosition;
     private float frozenTime = 0f;
-    private readonly float FREEZE_SECONDS = 2f;
+    private readonly float FREEZE_SECONDS = 1f;
+    private float iframes = 1.2f;
+    private float nextvulnerabletime=0f;
 
     public GameObject EventSystem1;
     public PlayerStats Scoreboard;
@@ -67,12 +69,19 @@ public class PlayerCharacter : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") && Time.time > nextvulnerabletime)
         {
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy == null)
             {
                 return;
+            }
+
+            nextvulnerabletime = Time.time + iframes;
+
+            if (heldObject != null)
+            {
+                DropCat();
             }
 
             switch (enemy.effect)
@@ -109,11 +118,14 @@ public class PlayerCharacter : MonoBehaviour
 
         heldCat.target = new Vector2(0, 0);
 
-        if (currentDropZone.name == "BlueZone" && heldCat.color == CatColor.Blue)
+        if (currentDropZone != null)
         {
-            heldCat.target = new Vector2(-9.3f, 11.27f);
-            heldCat.catMode = CatMode.SprintToHouse;
-            Scoreboard.catsReturned++;
+            if (currentDropZone.name == "BlueZone" && heldCat.color == CatColor.Blue)
+            {
+                heldCat.target = new Vector2(-9.3f, 11.27f);
+                heldCat.catMode = CatMode.SprintToHouse;
+                Scoreboard.catsReturned++;
+            }
         }
 
         heldObject = null;
