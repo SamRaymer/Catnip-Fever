@@ -83,7 +83,7 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 
-    public void private void OnTriggerExit2D(Collider2D other) {
+    public void OnTriggerExit2D(Collider2D other) {
         if (other.CompareTag("DropZone"))
         {
             currentDropZone = other.GetComponent<DropZone>();

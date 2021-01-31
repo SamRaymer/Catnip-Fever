@@ -13,7 +13,7 @@ public class PauseGame : MonoBehaviour
     public GameObject thePausePanel;
 
     // Are we paused?
-    bool isPaused = false;
+    public bool isPaused = false;
 
     private void Start() {
         thePausePanel.gameObject.SetActive(false);
@@ -33,6 +33,7 @@ public class PauseGame : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape)) {
             isPaused = !isPaused;
         }
+        
         thePauseButton.gameObject.SetActive(isPaused);
         thePausePanel.gameObject.SetActive(isPaused);
         // pausedText.gameObject.SetActive(isPaused);

@@ -13,7 +13,9 @@ public class GameTimer : MonoBehaviour
     private void Start()
     {
         // Starts the timer automatically
-        timerIsRunning = true;
+        // timerIsRunning = true;
+        timeText.text = "";
+        
     }
 
     void Update()
