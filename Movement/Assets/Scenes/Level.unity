@@ -451,7 +451,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.5300508
+  orthographic size: 4.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -3348,6 +3348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thePauseButton: {fileID: 1875126156}
   thePausePanel: {fileID: 64695502}
+  isPaused: 0
 --- !u!114 &1410588603
 MonoBehaviour:
   m_ObjectHideFlags: 0
