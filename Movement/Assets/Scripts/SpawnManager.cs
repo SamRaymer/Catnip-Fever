@@ -7,12 +7,17 @@ public class SpawnManager : MonoBehaviour
     public float accelf;
     public float accelf2;
 
+    public GameObject hosePrefab;
+
     public GameObject UpCarPrefab;
     public GameObject DownCarPrefab;
     public GameObject UpBikePrefab;
     public GameObject DownBikePrefab;
     public GameObject SoccerPrefab;
     public GameObject WaterPrefab;
+
+    public GameObject EventSystem1;
+    private PlayerStats Scoreboard;
 
     public float BikeInterval = 2.0f;
     public float CarInterval = 2.0f;
@@ -45,6 +50,8 @@ public class SpawnManager : MonoBehaviour
     private float NextSoccerSprinkle;
     private float NextWater;
 
+    private int hoseSpawned = 0;
+
     private float timeadjust;
     // Start is called before the first frame update
     void Start()
@@ -61,6 +68,9 @@ public class SpawnManager : MonoBehaviour
         NextWater = Time.time + WaterStart;
 
         timeadjust = Time.time;
+
+        EventSystem1 = GameObject.Find("EventSystem");
+        Scoreboard = EventSystem1.GetComponent(typeof(PlayerStats)) as PlayerStats;
     }
 
     Vector3 ParkBorderGen()
@@ -157,6 +167,12 @@ public class SpawnManager : MonoBehaviour
             behavoir.direction = Random.Range(0f, 360f);
             a.transform.Rotate(0f, 0f, Random.Range(0f, 360f));
             behavoir.velocity = Random.Range(1f,4f);
+        }
+
+        if (hoseSpawned == 0 && Scoreboard.catsReturned >= 1)
+        {
+            hoseSpawned = 1;
+            Instantiate(hosePrefab, new Vector2(5f,16f), new Quaternion(0f, 0f, 0f, 0f));
         }
     }
 }

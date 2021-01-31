@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accelf: 0
   accelf2: 0
+  hosePrefab: {fileID: 467226268210731921, guid: a8a37cb3d74a8472c9ef4ffa2a4d2f93,
+    type: 3}
   UpCarPrefab: {fileID: 4591910563393229366, guid: c1c30399d343a1546a65749f3a839638,
     type: 3}
   DownCarPrefab: {fileID: 6806179923766978647, guid: 9266339d92814754ea3dc0acfc0e9e1f,
