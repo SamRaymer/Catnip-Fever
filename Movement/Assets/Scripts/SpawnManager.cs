@@ -45,6 +45,7 @@ public class SpawnManager : MonoBehaviour
     private float NextSoccerSprinkle;
     private float NextWater;
 
+    private float timeadjust;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +59,8 @@ public class SpawnManager : MonoBehaviour
         NextSoccer = Time.time + SoccerBallStart;
         NextSoccerSprinkle = Time.time + SoccerSprinkleStart;
         NextWater = Time.time + WaterStart;
+
+        timeadjust = Time.time;
     }
 
     Vector3 ParkBorderGen()
@@ -85,7 +88,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        accelf = Mathf.Max(5 - Mathf.Floor(Time.time / 10), 1);
+        accelf = Mathf.Max(5 - Mathf.Floor( (Time.time - timeadjust) / 10), 1);
 
         // Spawn bikes and cars
         if (Time.time > NextLDBike)
