@@ -2186,6 +2186,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cat
       objectReference: {fileID: 0}
+    - target: {fileID: 8154145971444832516, guid: 03563f6711474d8489744c87e4ff91c1,
+        type: 3}
+      propertyPath: color
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03563f6711474d8489744c87e4ff91c1, type: 3}
 --- !u!1 &1099586223
@@ -2200,7 +2205,7 @@ GameObject:
   - component: {fileID: 1099586226}
   - component: {fileID: 1099586225}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: RedZone
   m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3200,7 +3205,7 @@ GameObject:
   - component: {fileID: 1257915666}
   - component: {fileID: 1257915665}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BlueZone
   m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3988,7 +3993,7 @@ GameObject:
   - component: {fileID: 1913871177}
   - component: {fileID: 1913871176}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GreenZone
   m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
