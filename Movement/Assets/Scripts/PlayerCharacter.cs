@@ -18,6 +18,7 @@ public class PlayerCharacter : MonoBehaviour
     private Rigidbody2D rigidBody;
     private GameObject pickupZone;
     public GameObject objectToPickUp;
+    private Animator animator;
 
     // Base speed
     public float speed = 10f;
@@ -28,6 +29,7 @@ public class PlayerCharacter : MonoBehaviour
         pickupZone = transform.Find("PickupZone").gameObject;
         rigidBody = GetComponent<Rigidbody2D>();
         spawnPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     private void Awake()
@@ -93,11 +95,9 @@ public class PlayerCharacter : MonoBehaviour
         {
             frozenTime -= Time.deltaTime;
         }
-    }
-
-    private void FixedUpdate()
-    {
         Vector2 delta = movement * speed;
         rigidBody.MovePosition(rigidBody.position + delta);
+        animator.SetFloat("Speed", movement.magnitude);
+        animator.SetBool("Cat", false);
     }
 }

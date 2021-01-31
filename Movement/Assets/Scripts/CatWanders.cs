@@ -113,9 +113,6 @@ public class CatWanders : MonoBehaviour {
 
         rigidb.velocity = ConstV;
 
-
-    
-
         /*else
         {
             timer -= Time.deltaTime;

@@ -560,7 +560,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 433851280}
         m_MethodName: OnInteract
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2938,6 +2938,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6945336699863676583, guid: ea828c549e665f84eaa2c71a849c34b0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 076c9b64747c9457191d4c5aaf7c3477, type: 2}
     - target: {fileID: 203748300883429742, guid: ea828c549e665f84eaa2c71a849c34b0,
         type: 3}
       propertyPath: m_IsTrigger
@@ -2947,6 +2952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433117107436700748, guid: ea828c549e665f84eaa2c71a849c34b0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433117107436700749, guid: ea828c549e665f84eaa2c71a849c34b0,
         type: 3}
@@ -2995,6 +3005,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433117107436700749, guid: ea828c549e665f84eaa2c71a849c34b0,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433117107436700749, guid: ea828c549e665f84eaa2c71a849c34b0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433117107436700749, guid: ea828c549e665f84eaa2c71a849c34b0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433117107436700749, guid: ea828c549e665f84eaa2c71a849c34b0,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3031,12 +3056,12 @@ PrefabInstance:
     - target: {fileID: 3433117107436700749, guid: ea828c549e665f84eaa2c71a849c34b0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -8.5
+      value: -0.46
       objectReference: {fileID: 0}
     - target: {fileID: 3433117107436700749, guid: ea828c549e665f84eaa2c71a849c34b0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 14
+      value: 15.26
       objectReference: {fileID: 0}
     - target: {fileID: 3433117107436700749, guid: ea828c549e665f84eaa2c71a849c34b0,
         type: 3}
@@ -3053,5 +3078,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3433117107436700751, guid: ea828c549e665f84eaa2c71a849c34b0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 957648efb02b9495caee6b06c3c2d063,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea828c549e665f84eaa2c71a849c34b0, type: 3}
