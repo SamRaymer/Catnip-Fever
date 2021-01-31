@@ -1,44 +1,85 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using System;
 using System.Collections;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
  
 public class CatWanders : MonoBehaviour {
  
+    // How far to randomly go
     public float wanderRadius;
-    public float wanderTimer;
- 
-    private Transform target;
-    private UnityEngine.AI.NavMeshAgent agent;
+
+    // How long to wander
+    public int wanderTimer;
+
+    // On what interval to wander
+    public int wanderInterval;
+
+    // Keep track
     private float timer;
- 
-    // Use this for initialization
-    void OnEnable () {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent> ();
+
+    //
+    private GameObject cat;
+
+    private int newDir;
+
+
+    void Start() {
         timer = wanderTimer;
+        cat = this.gameObject;
+        // Debug.Log(cat.position);
+        
     }
- 
+
     // Update is called once per frame
     void Update () {
-        timer += Time.deltaTime;
- 
-        if (timer >= wanderTimer) {
-            // HOW
-            // Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
-            // agent.SetDestination(newPos);
-            // agent.SetDestination(new Vector3(Random.Range(1,5), Random.Range(1,5), 0));
+        
+        timer -= Time.deltaTime;
+
+        //  Keep going!
+        if (timer > 0) {
+            if (Math.Round(timer, 0) % wanderInterval == 0) {
+                //
+                timer = timer - 1;
+                //
+                moveCat();
+            }
+        } else {
             timer = 0;
         }
     }
- 
-    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask) {
-        Vector3 randDirection = Random.insideUnitSphere * dist;
- 
-        randDirection += origin;
- 
-        UnityEngine.AI.NavMeshHit navHit;
- 
-        UnityEngine.AI.NavMesh.SamplePosition (randDirection, out navHit, dist, layermask);
- 
-        return navHit.position;
+
+    private void moveCat() {
+        //
+        newDir = Random.Range(1,4);
+
+        float moveX = 0f;
+        float moveY = 0f;
+
+        // N
+        if (newDir == 1) {
+            moveY = 1f;
+        }
+        // S
+        if (newDir == 2) {
+            moveY = -1f;
+        }
+        // W
+        if (newDir == 3) {
+            moveX = -1f;
+        }
+        // W
+        if (newDir == 4) {
+            moveX = 1f;
+        }
+        
+        // Here's what direction we go
+        Vector3 moveDirection = new Vector3(moveX, moveY).normalized;
+
+        Vector3 targetMovePosition = this.gameObject.transform.position + moveDirection * 50 * Time.deltaTime;
+
+        this.gameObject.transform.position = targetMovePosition;
     }
+
 }
