@@ -61,7 +61,7 @@ public class CatWanders : MonoBehaviour {
         animator = GetComponent<Animator>();
         // Debug.Log(cat.position);
 
-        if (catMode != CatMode.SprintToHouse && (this.transform.position.x < ParkboundL || this.transform.position.x > ParkboundR || this.transform.position.y < ParkboundB || this.transform.position.y < ParkboundU))
+        if (catMode != CatMode.SprintToHouse && (this.transform.position.x < ParkboundL || this.transform.position.x > ParkboundR || this.transform.position.y < ParkboundB || this.transform.position.y > ParkboundU))
         {
             velocity = velocityRun;
             target = ParkTargetGen();

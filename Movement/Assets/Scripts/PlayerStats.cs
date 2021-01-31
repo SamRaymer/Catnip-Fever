@@ -19,8 +19,8 @@ public class PlayerStats : MonoBehaviour
         
     }
 
-    public void catWasReturned() {
-        catsReturned += 1;
+    public void catWasReturned(int value) {
+        catsReturned += value;
         Debug.Log(string.Format("Cats: {0}", catsReturned));
     }
 }
