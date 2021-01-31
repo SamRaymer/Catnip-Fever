@@ -826,8 +826,8 @@ MonoBehaviour:
     type: 3}
   WaterPrefab: {fileID: 6054006224019388967, guid: 723809a7432c45f44909ae2d4fb3001d,
     type: 3}
-  BikeInterval: 2
-  CarInterval: 2
+  BikeInterval: 1.5
+  CarInterval: 0.75
   SoccerInterval: 0.2
   WaterInterval: 2
   SoccerBallStart: 1
