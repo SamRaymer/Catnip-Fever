@@ -706,8 +706,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fb05e8fc4524e4eaf4ea986f56c164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightCarPrefab: {fileID: 0}
-  LeftCarPrefab: {fileID: 0}
+  UpCarPrefab: {fileID: 4591910563393229366, guid: c1c30399d343a1546a65749f3a839638,
+    type: 3}
+  DownCarPrefab: {fileID: 6806179923766978647, guid: 9266339d92814754ea3dc0acfc0e9e1f,
+    type: 3}
+  UpBikePrefab: {fileID: 8393675266701091745, guid: 7916ad23952982f4cb081a72c94f51f8,
+    type: 3}
+  DownBikePrefab: {fileID: 6151476401788259422, guid: c764e41ccf1fe0f4bb22dac67d4af65d,
+    type: 3}
+  NextLDBike: 0
+  NextLUBike: 0
+  NextDCar: 0
+  NextUCar: 0
+  NextRDBike: 0
+  NextRUBike: 0
+  BikeInterval: 2
+  CarInterval: 2
 --- !u!4 &579874946
 Transform:
   m_ObjectHideFlags: 0
