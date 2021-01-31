@@ -14,10 +14,9 @@ public class PauseGame : MonoBehaviour
     // Are we paused?
     bool isPaused = false;
 
-    // Start is called before the first frame update
-    void Start() {
+    private void Start() {
+        pausedText = GameObject.Find("PausedText").GetComponent<Text>();
     }
-
     private void Awake() {
         pausedText.text = "";
         thePauseButton.gameObject.SetActive(false);
