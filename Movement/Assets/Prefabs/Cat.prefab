@@ -123,4 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wanderRadius: 1.95
   wanderTimer: 60
-  wanderInterval: 5
+  wanderInterval: 2
