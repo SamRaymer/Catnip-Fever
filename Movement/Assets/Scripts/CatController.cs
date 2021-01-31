@@ -85,7 +85,6 @@ public class CatController : MonoBehaviour {
         timer = wanderTimer;
         cat = this.gameObject;
         animator = GetComponent<Animator>();
-        // Debug.Log(cat.position);
 
         if (catMode != CatMode.SprintToHouse && (this.transform.position.x < ParkboundL || this.transform.position.x > ParkboundR || this.transform.position.y < ParkboundB || this.transform.position.y > ParkboundU))
         {
@@ -107,8 +106,6 @@ public class CatController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
-
         if (targetObject != null)
         {
             direction = new Vector2(targetObject.transform.position.x - this.transform.position.x, targetObject.transform.position.y - this.transform.position.y);
