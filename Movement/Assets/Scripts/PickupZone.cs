@@ -37,7 +37,7 @@ public class PickupZone : MonoBehaviour
     /// <param name="other">The other Collider2D involved in this collision.</param>
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Cat"))
+        if (playerCharacter.objectToPickUp == other.gameObject)
         {
             Debug.Log("Can't pick up that cat anymore");
             playerCharacter.objectToPickUp = null;

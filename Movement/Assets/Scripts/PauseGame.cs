@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 
 public class PauseGame : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class PauseGame : MonoBehaviour
     private void Start() {
     }
 
-    public void OnPause(InputAction.CallbackContext context)
+    public void Update()
     {
 
         /**

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerCharacter : MonoBehaviour
 {
@@ -18,6 +17,7 @@ public class PlayerCharacter : MonoBehaviour
     private Rigidbody2D rigidBody;
     private GameObject pickupZone;
     public GameObject objectToPickUp;
+    public GameObject heldObject;
     private Animator animator;
 
     // Base speed
@@ -73,20 +73,34 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
+    public void HandleInteract()
     {
+        if (!Input.GetKeyDown("space"))
+        {
+            return;
+        }
+
         Debug.Log("Pickup?");
         Debug.Log(objectToPickUp);
+        if (!objectToPickUp)
+        {
+            return;
+        }
+            heldObject = objectToPickUp;
+            objectToPickUp = null;
+
+            heldObject.GetComponent<SpriteRenderer>().enabled = false;
+            heldObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void HandleMove()
     {
         if (frozenTime > 0f) {
             movement = Vector2.zero;
             return;
         }
 
-        movement = context.ReadValue<Vector2>().normalized;
+        movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
     }
 
     public void Update()
@@ -95,9 +109,17 @@ public class PlayerCharacter : MonoBehaviour
         {
             frozenTime -= Time.deltaTime;
         }
+        HandleInteract();
+        HandleMove();
+
         Vector2 delta = movement * speed;
         rigidBody.MovePosition(rigidBody.position + delta);
         animator.SetFloat("Speed", movement.magnitude);
-        animator.SetBool("Cat", false);
+        if (!heldObject) {
+            animator.SetBool("Cat", false);
+        } else {
+            Debug.Log("KITTY"+heldObject.CompareTag("Cat"));
+            animator.SetBool("Cat", heldObject.CompareTag("Cat"));
+        }
     }
 }
