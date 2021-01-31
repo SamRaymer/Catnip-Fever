@@ -39,7 +39,7 @@ public class PickupZone : MonoBehaviour
     {
         if (other.CompareTag("Cat"))
         {
-            Debug.Log("Could pick up a cat");
+            Debug.Log("Can't pick up that cat anymore");
             playerCharacter.objectToPickUp = null;
         }
 
