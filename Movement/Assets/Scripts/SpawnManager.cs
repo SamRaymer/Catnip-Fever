@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public float accelf;
 
     public GameObject UpCarPrefab;
     public GameObject DownCarPrefab;
@@ -32,14 +33,14 @@ public class SpawnManager : MonoBehaviour
     private float ParkboundU = 19f;
     private float ParkboundB = 10f;
 
-    public float NextLDBike;
-    public float NextLUBike;
-    public float NextDCar;
-    public float NextUCar;
-    public float NextRDBike;
-    public float NextRUBike;
-    public float NextSoccer;
-    public float NextWater;
+    private float NextLDBike;
+    private float NextLUBike;
+    private float NextDCar;
+    private float NextUCar;
+    private float NextRDBike;
+    private float NextRUBike;
+    private float NextSoccer;
+    private float NextWater;
 
     // Start is called before the first frame update
     void Start()
@@ -80,42 +81,44 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        accelf = 2;//Mathf.Max(5 - Mathf.Floor(Time.time / 10), 1);
+
         // Spawn bikes and cars
         if(Time.time > NextLDBike)
         {
-            NextLDBike = Time.time + BikeInterval * (1 + Random.Range(0f, 1f));
+            NextLDBike = Time.time + BikeInterval * (1 + Random.Range(0f, accelf));
             Instantiate(DownBikePrefab, LDBikeSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
         if (Time.time > NextLUBike)
         {
-            NextLUBike = Time.time + BikeInterval * (1 + Random.Range(0f, 1f));
+            NextLUBike = Time.time + BikeInterval * (1 + Random.Range(0f, accelf));
             Instantiate(UpBikePrefab, LUBikeSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
         if (Time.time > NextDCar)
         {
-            NextDCar = Time.time + CarInterval * (1 + Random.Range(0f, 1f));
+            NextDCar = Time.time + CarInterval * (1 + Random.Range(0f, accelf));
             Instantiate(DownCarPrefab, DCarSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
         if (Time.time > NextUCar)
         {
-            NextUCar = Time.time + CarInterval * (1 + Random.Range(0f, 1f));
+            NextUCar = Time.time + CarInterval * (1 + Random.Range(0f, accelf));
             Instantiate(UpCarPrefab, UCarSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
         if (Time.time > NextRDBike)
         {
-            NextRDBike = Time.time + BikeInterval * (1 + Random.Range(0f, 1f));
+            NextRDBike = Time.time + BikeInterval * (1 + Random.Range(0f, accelf));
             Instantiate(DownBikePrefab, RDBikeSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
         if (Time.time > NextRUBike)
         {
-            NextRUBike = Time.time + BikeInterval * (1 + Random.Range(0f, 1f));
+            NextRUBike = Time.time + BikeInterval * (1 + Random.Range(0f, accelf));
             Instantiate(UpBikePrefab, RUBikeSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
 
         // Soccerballs
         if (Time.time > NextSoccer)
         {
-            NextSoccer = Time.time + SoccerInterval * (1 + Random.Range(0f, 1f));
+            NextSoccer = Time.time + SoccerInterval * Random.Range(0f, accelf);
             Vector3 Spawnpoint = ParkBorderGen();
             GameObject a = Instantiate(SoccerPrefab, Spawnpoint, new Quaternion(0f, 0f, 0f, 0f));
             ProjectileBehavoir behavoir = a.GetComponent(typeof(ProjectileBehavoir)) as ProjectileBehavoir;
