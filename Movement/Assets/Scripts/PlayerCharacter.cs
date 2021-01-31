@@ -13,7 +13,7 @@ public class PlayerCharacter : MonoBehaviour
     private PlayerCharacter_Base playerCharacterBase;
     private Vector2 movement = Vector2.zero;
     private Vector2 spawnPosition;
-    private float frozenTime = 0f;
+    public float stunTime = 0f;
     private readonly float FREEZE_SECONDS = 1f;
     private float iframes = 1.2f;
     private float nextvulnerabletime=0f;
@@ -90,7 +90,7 @@ public class PlayerCharacter : MonoBehaviour
                     transform.position = spawnPosition;
                     return;
                 case Effect.Stun:
-                    frozenTime = FREEZE_SECONDS;
+                    stunTime = FREEZE_SECONDS;
                     return;
             }
         }
@@ -163,7 +163,7 @@ public class PlayerCharacter : MonoBehaviour
 
     public void HandleMove()
     {
-        if (frozenTime > 0f) {
+        if (stunTime > 0f) {
             movement = Vector2.zero;
             return;
         }
@@ -173,9 +173,9 @@ public class PlayerCharacter : MonoBehaviour
 
     public void Update()
     {
-        if (frozenTime > 0f)
+        if (stunTime > 0f)
         {
-            frozenTime -= Time.deltaTime;
+            stunTime -= Time.deltaTime;
         }
         HandleInteract();
         HandleMove();
@@ -188,6 +188,7 @@ public class PlayerCharacter : MonoBehaviour
         } else {
             animator.SetBool("Cat", heldObject.CompareTag("Cat"));
         }
+        animator.SetBool("Stunned", stunTime > 0f);
         if (delta.magnitude > 0f && delta.x > 0f)
         {
             spriteRenderer.flipX = true;
