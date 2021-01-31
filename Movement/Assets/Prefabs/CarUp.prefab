@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4591910563393229365}
   - component: {fileID: 4591910563393229364}
   - component: {fileID: 4591910563393229367}
+  - component: {fileID: -1713392617479570077}
   m_Layer: 0
   m_Name: CarUp
   m_TagString: Enemy
@@ -124,3 +125,24 @@ MonoBehaviour:
   velocity: 2
   direction: 90
   rotation: 0
+--- !u!50 &-1713392617479570077
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591910563393229366}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

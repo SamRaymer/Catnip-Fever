@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6936107373084400578}
   - component: {fileID: 7987020776262559771}
   - component: {fileID: 5115644330436452284}
+  - component: {fileID: -8783520182892971126}
   m_Layer: 0
   m_Name: BikeDown
   m_TagString: Enemy
@@ -124,3 +125,24 @@ MonoBehaviour:
   velocity: 1
   direction: 270
   rotation: 0
+--- !u!50 &-8783520182892971126
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151476401788259422}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -15,18 +15,24 @@ public class ProjectileBehavoir : MonoBehaviour
     private float despawnLeft = -13.0f;
     private float despawnRight = 9.0f;
 
+    private Vector2 ConstV;
+    private Rigidbody2D rigidb;
+
     // Start is called before the first frame update
     void Start()
     {
         direction_radians = direction * Mathf.PI / 180.0f;
-        
+
+        rigidb = gameObject.GetComponent(typeof(Rigidbody2D)) as Rigidbody2D;
+
+        ConstV = new Vector2(Mathf.Cos(direction_radians), Mathf.Sin(direction_radians)) * velocity;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += (new Vector3(0, 1, 0) * Mathf.Sin(direction_radians) + new Vector3(1, 0, 0) * Mathf.Cos(direction_radians)) * velocity * Time.deltaTime;
-        transform.Rotate(0, 0, rotation * Time.deltaTime);
+        rigidb.velocity = ConstV;
+        rigidb.angularVelocity = rotation;
 
         if (transform.position.x > despawnRight || transform.position.x < despawnLeft || transform.position.y > despawnTop || transform.position.y<despawnBottom)
         {
