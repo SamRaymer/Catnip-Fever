@@ -130,38 +130,4 @@ public class CatWanders : MonoBehaviour {
 
         */
     }
-/*
-    private void moveCat() {
-        //
-        newDir = Random.Range(1,4);
-
-        float moveX = 0f;
-        float moveY = 0f;
-
-        // N
-        if (newDir == 1) {
-            moveY = 1f;
-        }
-        // S
-        if (newDir == 2) {
-            moveY = -1f;
-        }
-        // W
-        if (newDir == 3) {
-            moveX = -1f;
-        }
-        // W
-        if (newDir == 4) {
-            moveX = 1f;
-        }
-        
-        // Here's what direction we go
-        Vector3 moveDirection = new Vector3(moveX, moveY).normalized;
-
-        rigidb.velocity = moveDirection * velocity;
-        //        Vector3 targetMovePosition = this.gameObject.transform.position + moveDirection * 50 * Time.deltaTime;
-
-        //        this.gameObject.transform.position = targetMovePosition;
-    }
-    */
 }
