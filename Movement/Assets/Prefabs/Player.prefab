@@ -200,9 +200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c574ed14e504c45badd150a82cab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupSound: {fileID: 8300000, guid: 6333a20ab06dfb848a87630392691d0d, type: 3}
   objectToPickUp: {fileID: 0}
   heldObject: {fileID: 0}
-  catPickup: {fileID: 8300000, guid: 6333a20ab06dfb848a87630392691d0d, type: 3}
+  currentDropZone: {fileID: 0}
   speed: 0.1
 --- !u!58 &8895131855146017597
 CircleCollider2D:
