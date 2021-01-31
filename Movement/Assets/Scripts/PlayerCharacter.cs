@@ -126,6 +126,18 @@ public class PlayerCharacter : MonoBehaviour
                 heldCat.catMode = CatMode.SprintToHouse;
                 Scoreboard.catsReturned++;
             }
+            if (currentDropZone.name == "RedZone" && heldCat.color == CatColor.Pink)
+            {
+                heldCat.target = new Vector2(-9.4f, 18f);
+                heldCat.catMode = CatMode.SprintToHouse;
+                Scoreboard.catsReturned++;
+            }
+            if (currentDropZone.name == "GreenZone" && heldCat.color == CatColor.Green)
+            {
+                heldCat.target = new Vector2(-9.43f, 14.8f);
+                heldCat.catMode = CatMode.SprintToHouse;
+                Scoreboard.catsReturned++;
+            }
         }
 
         heldObject = null;

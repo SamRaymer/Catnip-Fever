@@ -31,12 +31,14 @@ public class RunToPoint : MonoBehaviour
             direction = target - new Vector2(this.transform.position.x, this.transform.position.y);
         }
 
-        if(Mathf.Sqrt(direction.x*direction.x + direction.y*direction.y) < CloseEnough)
-        {
-            // do something
-        }
+
 
         ConstV = new Vector2(Mathf.Cos(Mathf.Atan2(direction.y,direction.x)), Mathf.Sin(Mathf.Atan2(direction.y, direction.x))) * velocity;
+
+        if (Mathf.Sqrt(direction.x * direction.x + direction.y * direction.y) < CloseEnough)
+        {
+            ConstV = new Vector2(0, 0);
+        }
 
         rigidb.velocity = ConstV;
     }
