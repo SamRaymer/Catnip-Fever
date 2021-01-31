@@ -1981,6 +1981,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a13d62929608eb469af447679d574d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausedText: {fileID: 1011041616}
+  thePauseButton: {fileID: 1875126156}
 --- !u!114 &1410588603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2613,6 +2615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c65ef13b648bf7408bd4181ce7b99b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnQuit: {fileID: 1875126156}
 --- !u!1 &1945391811
 GameObject:
   m_ObjectHideFlags: 0
@@ -2644,7 +2647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9150943, g: 0.13961013, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
