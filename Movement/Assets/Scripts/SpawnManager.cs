@@ -83,58 +83,58 @@ public class SpawnManager : MonoBehaviour
         // Spawn bikes and cars
         if(Time.time > NextLDBike)
         {
-            NextLDBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
+            NextLDBike = Time.time + BikeInterval * (1 + Random.Range(0f, 1f));
             Instantiate(DownBikePrefab, LDBikeSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
         if (Time.time > NextLUBike)
         {
-            NextLUBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
+            NextLUBike = Time.time + BikeInterval * (1 + Random.Range(0f, 1f));
             Instantiate(UpBikePrefab, LUBikeSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
         if (Time.time > NextDCar)
         {
-            NextDCar = Time.time + CarInterval * (1 + Random.Range(0, 1));
+            NextDCar = Time.time + CarInterval * (1 + Random.Range(0f, 1f));
             Instantiate(DownCarPrefab, DCarSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
         if (Time.time > NextUCar)
         {
-            NextUCar = Time.time + CarInterval * (1 + Random.Range(0, 1));
+            NextUCar = Time.time + CarInterval * (1 + Random.Range(0f, 1f));
             Instantiate(UpCarPrefab, UCarSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
         if (Time.time > NextRDBike)
         {
-            NextRDBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
+            NextRDBike = Time.time + BikeInterval * (1 + Random.Range(0f, 1f));
             Instantiate(DownBikePrefab, RDBikeSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
         if (Time.time > NextRUBike)
         {
-            NextRUBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
+            NextRUBike = Time.time + BikeInterval * (1 + Random.Range(0f, 1f));
             Instantiate(UpBikePrefab, RUBikeSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
 
         // Soccerballs
         if (Time.time > NextSoccer)
         {
-            NextSoccer = Time.time + SoccerInterval * (1 + Random.Range(0, 1));
+            NextSoccer = Time.time + SoccerInterval * (1 + Random.Range(0f, 1f));
             Vector3 Spawnpoint = ParkBorderGen();
             GameObject a = Instantiate(SoccerPrefab, Spawnpoint, new Quaternion(0f, 0f, 0f, 0f));
             ProjectileBehavoir behavoir = a.GetComponent(typeof(ProjectileBehavoir)) as ProjectileBehavoir;
             behavoir.rotation = Random.Range(30f, 250f);
             behavoir.direction = Random.Range(0f, 360f);
-            a.transform.Rotate(0, 0, Random.Range(0f, 360f));
+            a.transform.Rotate(0f, 0f, Random.Range(0f, 360f));
             behavoir.velocity = 3f;
         }
 
         // Watermelons
         if (Time.time > NextWater)
         {
-            NextWater = Time.time + WaterInterval * (1 + Random.Range(0, 1));
+            NextWater = Time.time + WaterInterval * (1 + Random.Range(0f, 1f));
             Vector3 Spawnpoint = ParkBorderGen();
             GameObject a = Instantiate(WaterPrefab, Spawnpoint, new Quaternion(0f, 0f, 0f, 0f));
             ProjectileBehavoir behavoir = a.GetComponent(typeof(ProjectileBehavoir)) as ProjectileBehavoir;
             behavoir.rotation = Random.Range(30f, 250f);
             behavoir.direction = Random.Range(0f, 360f);
-            a.transform.Rotate(0, 0, Random.Range(0f, 360f));
+            a.transform.Rotate(0f, 0f, Random.Range(0f, 360f));
             behavoir.velocity = Random.Range(1f,4f);
         }
     }

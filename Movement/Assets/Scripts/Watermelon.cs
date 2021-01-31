@@ -8,8 +8,6 @@ public class Watermelon : MonoBehaviour
     public float ShootTime;
     public float nextShot;
 
-    public float v;
-
     void Start()
     {
         ShootTime = Random.Range(.1f, .5f);
@@ -26,10 +24,10 @@ public class Watermelon : MonoBehaviour
             GameObject a = Instantiate(SeedPrefab, this.transform.position, new Quaternion(0f, 0f, 0f, 0f));
             ProjectileBehavoir behavoir = a.GetComponent(typeof(ProjectileBehavoir)) as ProjectileBehavoir;
             behavoir.rotation = Random.Range(30f, 250f);
-            behavoir.direction = this.transform.eulerAngles.z * 180f / Mathf.PI;
+            behavoir.direction = this.transform.eulerAngles.z;
             behavoir.velocity = 3f;
 
-            v = this.transform.eulerAngles.z;
+
         }
     }
 }
