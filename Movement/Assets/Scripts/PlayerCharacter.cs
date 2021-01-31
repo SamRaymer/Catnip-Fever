@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCharacter : MonoBehaviour
 {
@@ -54,30 +55,18 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    private void Update()
+    public void OnInteract(InputAction.CallbackContext context)
     {
-        handleMovement();
-        handleInteract();
+        Debug.Log("Pickup?");
+        Debug.Log(objectToPickUp);
     }
 
-    private void handleInteract()
+    public void OnMove(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            Debug.Log("Pickup?");
-
-            // What are we touching?
-            Debug.Log(objectToPickUp);
-        }
+        movement = context.ReadValue<Vector2>().normalized;
     }
-
-    private void handleMovement()
+    private void FixedUpdate()
     {
-        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-    }
-
-    private void FixedUpdate() {
         Vector2 delta = movement * speed;
         rigidBody.MovePosition(rigidBody.position + delta);
     }

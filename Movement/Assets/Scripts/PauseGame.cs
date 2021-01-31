@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PauseGame : MonoBehaviour
 {
@@ -16,18 +17,9 @@ public class PauseGame : MonoBehaviour
 
     private void Start() {
     }
-    private void Awake() {
-        // thePauseButton.gameObject.SetActive(false);
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPause(InputAction.CallbackContext context)
     {
-        // Notice this is called during pause
-        listenForPause();
-    }
-
-    void listenForPause() {
 
         /**
          * What doesn't get stopped or affected
