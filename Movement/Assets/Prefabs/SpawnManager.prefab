@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8487520575819740082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8487520575819740080}
+  - component: {fileID: 8487520575819740083}
+  - component: {fileID: 8487520575819740081}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8487520575819740080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8487520575819740082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.0452037, y: 15.332517, z: -14.681641}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8487520575819740083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8487520575819740082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fb05e8fc4524e4eaf4ea986f56c164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accelf: 0
+  accelf2: 0
+  UpCarPrefab: {fileID: 4591910563393229366, guid: c1c30399d343a1546a65749f3a839638,
+    type: 3}
+  DownCarPrefab: {fileID: 6806179923766978647, guid: 9266339d92814754ea3dc0acfc0e9e1f,
+    type: 3}
+  UpBikePrefab: {fileID: 8393675266701091745, guid: 7916ad23952982f4cb081a72c94f51f8,
+    type: 3}
+  DownBikePrefab: {fileID: 6151476401788259422, guid: c764e41ccf1fe0f4bb22dac67d4af65d,
+    type: 3}
+  SoccerPrefab: {fileID: 4655509829269637956, guid: d9722cb0b13c9744d872ad7c596345da,
+    type: 3}
+  WaterPrefab: {fileID: 6054006224019388967, guid: 723809a7432c45f44909ae2d4fb3001d,
+    type: 3}
+  BikeInterval: 1.5
+  CarInterval: 0.75
+  SoccerInterval: 0.2
+  WaterInterval: 2
+  SoccerBallStart: 1
+  SoccerSprinkleStart: 10
+  WaterStart: 1
+--- !u!114 &8487520575819740081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8487520575819740082}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696e2624381f74f45bcdcb7b4d970701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabCat: {fileID: 479529633301404175, guid: 03563f6711474d8489744c87e4ff91c1,
+    type: 3}
