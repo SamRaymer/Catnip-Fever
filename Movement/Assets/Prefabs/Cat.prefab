@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac425f499b1e1ba4db57fa02f83d5daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
+  color: 2
   catMode: 0
   animators:
   - color: 2
