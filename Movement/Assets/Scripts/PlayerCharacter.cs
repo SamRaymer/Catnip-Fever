@@ -8,6 +8,7 @@ public class PlayerCharacter : MonoBehaviour
     // Character
     private PlayerCharacter_Base playerCharacterBase;
     private Vector2 movement = Vector2.zero;
+    private Vector2 spawnPosition;
 
     // Keep track of movement
     private Vector2 lastMoveDir;
@@ -23,6 +24,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         pickupZone = transform.Find("PickupZone").gameObject;
         rigidBody = GetComponent<Rigidbody2D>();
+        spawnPosition = transform.position;
     }
 
     private void Awake()
@@ -41,6 +43,15 @@ public class PlayerCharacter : MonoBehaviour
         {
             Debug.Log("Touched a cat");
         }
+        Debug.Log(collision.gameObject.name);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            transform.position = spawnPosition;
+        }
     }
 
     // Update is called once per frame
@@ -48,7 +59,6 @@ public class PlayerCharacter : MonoBehaviour
     {
         handleMovement();
         handleInteract();
-
     }
 
     private void handleInteract()
