@@ -20,6 +20,7 @@ public class PlayerCharacter : MonoBehaviour
     private Vector2 lastMoveDir;
     private Rigidbody2D rigidBody;
     private GameObject pickupZone;
+    private SpriteRenderer spriteRenderer;
     public GameObject objectToPickUp;
     public GameObject heldObject;
     public DropZone currentDropZone;
@@ -35,6 +36,7 @@ public class PlayerCharacter : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         spawnPosition = transform.position;
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Awake()
@@ -83,10 +85,10 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 
-    public void private void OnTriggerExit2D(Collider2D other) {
-        if (other.CompareTag("DropZone"))
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other == currentDropZone)
         {
-            currentDropZone = other.GetComponent<DropZone>();
+            currentDropZone = null;
         }
     }
 
@@ -138,8 +140,15 @@ public class PlayerCharacter : MonoBehaviour
         if (!heldObject) {
             animator.SetBool("Cat", false);
         } else {
-            Debug.Log("KITTY"+heldObject.CompareTag("Cat"));
             animator.SetBool("Cat", heldObject.CompareTag("Cat"));
+        }
+        if (delta.magnitude > 0f && delta.x > 0f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        if (delta.magnitude > 0f && delta.x < 0f)
+        {
+            spriteRenderer.flipX = false;
         }
     }
 }
