@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerCharacter : MonoBehaviour
 {
 
+    // Sounds
+    // public AudioSource audio;
+    public AudioClip pickupSound;
+
     // Character
     private PlayerCharacter_Base playerCharacterBase;
     private Vector2 movement = Vector2.zero;
@@ -101,6 +105,9 @@ public class PlayerCharacter : MonoBehaviour
         }
             heldObject = objectToPickUp;
             objectToPickUp = null;
+
+            // Meow!
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
 
             heldObject.GetComponent<SpriteRenderer>().enabled = false;
             heldObject.GetComponent<BoxCollider2D>().enabled = false;
