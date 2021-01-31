@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.Animations;
 using System;
 using System.Collections;
 using UnityEngine.AI;
@@ -19,32 +18,10 @@ public enum CatColor {
     Pink, Green, Blue
 }
 
-[System.Serializable]
-public class ColorAnimatorEntry {
-    public CatColor color;
-    public AnimatorController animator;
-
-    public static ColorAnimatorEntry[] GetEntriesWithoutAnimators()
-    {
-        return new ColorAnimatorEntry[] {
-            new ColorAnimatorEntry{
-                color = CatColor.Blue
-            },
-            new ColorAnimatorEntry{
-                color = CatColor.Green
-            },
-            new ColorAnimatorEntry{
-                color = CatColor.Pink
-            }
-        };
-    }
-}
- 
 public class CatController : MonoBehaviour {
 
     public CatColor color = CatColor.Green;
     public CatMode catMode = CatMode.Midair;
-    public ColorAnimatorEntry[] animators = ColorAnimatorEntry.GetEntriesWithoutAnimators();
 
     // How far to randomly go
     public float wanderRadius;
@@ -114,7 +91,6 @@ public class CatController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
         if (targetObject != null)
         {
             direction = new Vector2(targetObject.transform.position.x - this.transform.position.x, targetObject.transform.position.y - this.transform.position.y);
