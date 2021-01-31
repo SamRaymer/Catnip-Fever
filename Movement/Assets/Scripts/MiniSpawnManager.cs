@@ -101,11 +101,6 @@ public class MiniSpawnManager : MonoBehaviour
             NextLUBike = Time.time + BikeInterval * (1 + Random.Range(0f, accelf));
             Instantiate(UpBikePrefab, LUBikeSpawn, new Quaternion(0f, 0f, 0f, 0f));
         }
-        if (Time.time > NextDCar)
-        {
-            NextDCar = Time.time + CarInterval * (1 + Random.Range(0f, accelf));
-            Instantiate(DownCarPrefab, DCarSpawn, new Quaternion(0f, 0f, 0f, 0f));
-        }
         if (Time.time > NextUCar)
         {
             NextUCar = Time.time + CarInterval * (1 + Random.Range(0f, accelf));
