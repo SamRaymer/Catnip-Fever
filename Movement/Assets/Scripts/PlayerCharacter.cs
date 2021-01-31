@@ -18,6 +18,7 @@ public class PlayerCharacter : MonoBehaviour
     private GameObject pickupZone;
     public GameObject objectToPickUp;
     public GameObject heldObject;
+    public DropZone currentDropZone;
     private Animator animator;
 
     // Base speed
@@ -70,6 +71,18 @@ public class PlayerCharacter : MonoBehaviour
                     frozenTime = FREEZE_SECONDS;
                     return;
             }
+        }
+
+        if (other.CompareTag("DropZone"))
+        {
+            currentDropZone = other.GetComponent<DropZone>();
+        }
+    }
+
+    public void private void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("DropZone"))
+        {
+            currentDropZone = other.GetComponent<DropZone>();
         }
     }
 
