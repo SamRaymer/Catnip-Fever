@@ -10,6 +10,8 @@ public class PlayerCharacter : MonoBehaviour
 
     // Keep track of movement
     private Vector3 lastMoveDir;
+    private GameObject pickupZone;
+    public GameObject objectToPickUp;
 
     // Base speed
     public float speed = 10f;
@@ -17,7 +19,7 @@ public class PlayerCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        pickupZone = transform.Find("PickupZone").gameObject;
     }
 
     private void Awake()
@@ -30,38 +32,30 @@ public class PlayerCharacter : MonoBehaviour
      * Only triggered when the box collider is
      * selected as trigger - probably useless
      */
-    void OnTriggerEnter2D (Collider2D other) {
-        if (other.CompareTag("Cat")) {
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.otherCollider.CompareTag("Cat"))
+        {
             Debug.Log("Touched a cat");
         }
     }
 
     // Update is called once per frame
-    private void Update() {
+    private void Update()
+    {
         handleMovement();
         handleInteract();
 
     }
 
-    private void handleInteract() {
-        if (Input.GetKeyUp(KeyCode.Space)) {
+    private void handleInteract()
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
             Debug.Log("Pickup?");
 
-            //
-            // Vector3 myPosition = playerCharacterBase.position;
-            // Debug.Log(new Vector3(transform.position));
-
-            Debug.Log(Input.touchCount);
-
-
             // What are we touching?
-            RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, new Vector3(1,1).normalized, speed * Time.deltaTime);
-            if (raycastHit != null) {
-
-            Debug.Log(raycastHit);
-            }
-
-
+            Debug.Log(objectToPickUp);
         }
     }
 
