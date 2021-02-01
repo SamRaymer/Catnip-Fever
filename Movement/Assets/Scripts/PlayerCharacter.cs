@@ -74,13 +74,19 @@ public class PlayerCharacter : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy") && Time.time > nextvulnerabletime)
+        if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy == null)
             {
                 return;
             }
+
+            if (Time.time < nextvulnerabletime && enemy.effect != Effect.Reset)
+            {
+                return;
+            }
+
 
             nextvulnerabletime = Time.time + iframes;
 
@@ -107,7 +113,7 @@ public class PlayerCharacter : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other == currentDropZone)
+        if (other.CompareTag("DropZone"))
         {
             currentDropZone = null;
         }
@@ -130,20 +136,17 @@ public class PlayerCharacter : MonoBehaviour
                 heldCat.target = new Vector2(-9.3f, 11.27f);
                 heldCat.catMode = CatMode.SprintToHouse;
                 Scoreboard.catsReturned++;
-                StaticClass.theScore = Scoreboard.catsReturned;
             }
             if (currentDropZone.name == "RedZone" && heldCat.color == CatColor.Pink)
             {
                 heldCat.target = new Vector2(-9.4f, 18f);
                 heldCat.catMode = CatMode.SprintToHouse;
-                StaticClass.theScore = Scoreboard.catsReturned;
             }
             if (currentDropZone.name == "GreenZone" && heldCat.color == CatColor.Green)
             {
                 heldCat.target = new Vector2(-9.43f, 14.8f);
                 heldCat.catMode = CatMode.SprintToHouse;
                 Scoreboard.catsReturned++;
-                StaticClass.theScore = Scoreboard.catsReturned;
             }
             scoreText.text = "Score: " + StaticClass.theScore;
             

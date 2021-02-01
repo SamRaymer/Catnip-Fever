@@ -27,7 +27,6 @@ public class PlayerStats : MonoBehaviour
             theScoreText.text = "SCORE: " + catsReturned;
 
         }
-        // oldScore = 
     }
 
     public void catWasReturned(int value) {

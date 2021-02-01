@@ -183,7 +183,7 @@ public class SpawnManager : MonoBehaviour
             behavoir.velocity = Random.Range(1f,4f);
         }
 
-        if (hoseSpawned == 0 && Scoreboard.catsReturned >= 1)
+        if (hoseSpawned == 0 && Scoreboard.catsReturned >= 3)
         {
             hoseSpawned = 1;
             Instantiate(hosePrefab, new Vector2(5f,16f), new Quaternion(0f, 0f, 0f, 0f));
