@@ -9,6 +9,7 @@ public class HoseController : MonoBehaviour
     GameTimer gameTimer;
     public float secondsBetweenSpawns = 3f;
     public float spawnTimer = 0f;
+    public int maxCats = 20;
     public int spawnCount = 0;
     private Transform spawnPoint;
 
@@ -31,7 +32,7 @@ public class HoseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawnTimer <= 0f)
+        if (spawnTimer <= 0f && GameObject.FindGameObjectsWithTag("Cat").Length < maxCats)
         {
             MakeCat(spawnPoint.position, Quaternion.identity);
             spawnTimer += secondsBetweenSpawns;
