@@ -141,6 +141,7 @@ public class PlayerCharacter : MonoBehaviour
             {
                 heldCat.target = new Vector2(-9.4f, 18f);
                 heldCat.catMode = CatMode.SprintToHouse;
+                Scoreboard.catsReturned++;
             }
             if (currentDropZone.name == "GreenZone" && heldCat.color == CatColor.Green)
             {
