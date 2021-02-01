@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6992e79297a954d83cf5903db39eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 7
+  velocity: 4
   target: {x: -1, y: 15}
   targetObject: {fileID: 0}
   CloseEnough: 1
@@ -155,6 +155,6 @@ MonoBehaviour:
     type: 3}
   playerPrefab: {fileID: 8895131855146017593, guid: f0a2b4ee7be57744599db6a2972bd62a,
     type: 3}
-  SpawnmanagerPrebab: {fileID: 8487520575819740082, guid: 7009b56d08e72a648965ea3a88fbd1ab,
-    type: 3}
+  Spawnmanager: {fileID: 0}
   MiniSpawnManager: {fileID: 0}
+  s: {fileID: 0}

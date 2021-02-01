@@ -24,12 +24,12 @@ public class NipScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        t1 = Time.time + Random.Range(0.1f, 1f);
-        t2 = Time.time + Random.Range(0.1f, 1f);
-        t3 = Time.time + Random.Range(0.1f, 1f);
-        t4 = Time.time + Random.Range(0.1f, 1f);
-        t5 = Time.time + Random.Range(0.1f, 1f);
-        t6 = Time.time + Random.Range(0.1f, 1f);
+        t1 = Time.time + 1 + Random.Range(0.1f, 1f);
+        t2 = Time.time + 1 + Random.Range(0.1f, 1f);
+        t3 = Time.time + 1 + Random.Range(0.1f, 1f);
+        t4 = Time.time + 1 + Random.Range(0.1f, 1f);
+        t5 = Time.time + 1 + Random.Range(0.1f, 1f);
+        t6 = Time.time + 1 + Random.Range(0.1f, 1f);
 
         tplayer = Time.time + 2;
 

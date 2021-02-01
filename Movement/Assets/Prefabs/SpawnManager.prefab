@@ -61,13 +61,13 @@ MonoBehaviour:
   WaterPrefab: {fileID: 6054006224019388967, guid: 723809a7432c45f44909ae2d4fb3001d,
     type: 3}
   EventSystem1: {fileID: 0}
-  BikeInterval: 1.5
-  CarInterval: 0.75
+  BikeInterval: 3
+  CarInterval: 1
   SoccerInterval: 0.2
-  WaterInterval: 2
+  WaterInterval: 1.6
   SoccerBallStart: 30
   SoccerSprinkleStart: 15
-  WaterStart: 80
+  WaterStart: 75
 --- !u!114 &8487520575819740081
 MonoBehaviour:
   m_ObjectHideFlags: 0
