@@ -10,10 +10,14 @@ public class HoseController : MonoBehaviour
     GameTimer gameTimer;
     public float secondsBetweenSpawns = 3f;
     public float spawnTimer = 0f;
+    private Transform spawnPoint;
 
     void Start()
     {
+        eventSystem = GameObject.Find("EventSystem");
         gameTimer = eventSystem.GetComponent<GameTimer>();
+        spawnPoint = transform.GetChild(0);
+        spawnPoint.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     // Update is called once per frame
@@ -21,7 +25,7 @@ public class HoseController : MonoBehaviour
     {
         if (spawnTimer <= 0f)
         {
-            Instantiate(catPrefab, transform.position, Quaternion.identity);
+            Instantiate(catPrefab, spawnPoint.position, Quaternion.identity);
             spawnTimer += secondsBetweenSpawns;
         }
 

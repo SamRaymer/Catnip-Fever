@@ -17,6 +17,7 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         Debug.Log(StaticClass.theScore);
+        StaticClass.theScore = catsReturned;
     }
 
     public void catWasReturned(int value) {
