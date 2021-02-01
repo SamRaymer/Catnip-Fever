@@ -69,13 +69,19 @@ public class PlayerCharacter : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy") && Time.time > nextvulnerabletime)
+        if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy == null)
             {
                 return;
             }
+
+            if (Time.time < nextvulnerabletime && enemy.effect != Effect.Reset)
+            {
+                return;
+            }
+
 
             nextvulnerabletime = Time.time + iframes;
 
@@ -102,7 +108,7 @@ public class PlayerCharacter : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other == currentDropZone)
+        if (other.CompareTag("DropZone"))
         {
             currentDropZone = null;
         }
