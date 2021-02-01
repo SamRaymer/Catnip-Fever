@@ -95,11 +95,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf159c40f3ccd43739d7fc4c96c9fc22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catPrefab: {fileID: 479529633301404175, guid: 03563f6711474d8489744c87e4ff91c1,
-    type: 3}
   eventSystem: {fileID: 0}
   secondsBetweenSpawns: 3
   spawnTimer: 0
+  spawnCount: 0
+  catPrefabs:
+  - {fileID: 479529633301404175, guid: 03563f6711474d8489744c87e4ff91c1, type: 3}
+  - {fileID: 181575757649362512, guid: 4f8b52aa7c62f49249167dab6fd153be, type: 3}
+  - {fileID: 930584360480115639, guid: ec2118004f92746feb65f8ec6b4822f7, type: 3}
 --- !u!1 &6209128556671327214
 GameObject:
   m_ObjectHideFlags: 0

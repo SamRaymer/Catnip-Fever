@@ -5,12 +5,14 @@ using UnityEngine;
 public class HoseController : MonoBehaviour
 {
     private PlayerStats playerStats;
-    public GameObject catPrefab;
     public GameObject eventSystem;
     GameTimer gameTimer;
     public float secondsBetweenSpawns = 3f;
     public float spawnTimer = 0f;
+    public int spawnCount = 0;
     private Transform spawnPoint;
+
+    public GameObject[] catPrefabs = new GameObject[]{null, null, null};
 
     void Start()
     {
@@ -20,12 +22,18 @@ public class HoseController : MonoBehaviour
         spawnPoint.GetComponent<SpriteRenderer>().enabled = false;
     }
 
+    void MakeCat(Vector3 position, Quaternion orientation)
+    {
+        Instantiate(catPrefabs[spawnCount % catPrefabs.Length], position, orientation);
+        spawnCount++;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (spawnTimer <= 0f)
         {
-            Instantiate(catPrefab, spawnPoint.position, Quaternion.identity);
+            MakeCat(spawnPoint.position, Quaternion.identity);
             spawnTimer += secondsBetweenSpawns;
         }
 
