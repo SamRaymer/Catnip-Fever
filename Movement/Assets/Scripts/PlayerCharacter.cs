@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class PlayerCharacter : MonoBehaviour
     // Sounds
     // public AudioSource audio;
     public AudioClip pickupSound;
+
+    //
+    public Text scoreText;
+
 
     // Character
     private PlayerCharacter_Base playerCharacterBase;
@@ -140,6 +145,9 @@ public class PlayerCharacter : MonoBehaviour
                 Scoreboard.catsReturned++;
                 StaticClass.theScore = Scoreboard.catsReturned;
             }
+            scoreText.text = "Score: " + StaticClass.theScore;
+            
+            // uopdate
         }
 
         heldObject = null;
