@@ -21,7 +21,7 @@ public class PlayerCharacter : MonoBehaviour
     public float stunTime = 0f;
     private readonly float FREEZE_SECONDS = 1f;
     private float iframes = 1.2f;
-    private float nextvulnerabletime=0f;
+    private float nextvulnerabletime = 0f;
 
     public GameObject EventSystem1;
     public PlayerStats Scoreboard;
@@ -112,7 +112,8 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
+    private void OnTriggerExit2D(Collider2D other)
+    {
         if (other.CompareTag("DropZone"))
         {
             currentDropZone = null;
@@ -150,8 +151,6 @@ public class PlayerCharacter : MonoBehaviour
                 Scoreboard.catsReturned++;
             }
             scoreText.text = "Score: " + StaticClass.theScore;
-            
-            // uopdate
         }
 
         heldObject = null;
@@ -179,13 +178,15 @@ public class PlayerCharacter : MonoBehaviour
 
         Debug.Log("Pickup?");
         Debug.Log(objectToPickUp);
-        if (!objectToPickUp) {
+        if (!objectToPickUp)
+        {
             return;
         }
 
         heldObject = objectToPickUp;
         CatController cat = heldObject.GetComponent<CatController>();
-        switch (cat.color) {
+        switch (cat.color)
+        {
             case CatColor.Blue:
                 animator.SetTrigger("Blue Cat");
                 break;
@@ -208,7 +209,8 @@ public class PlayerCharacter : MonoBehaviour
 
     public void HandleMove()
     {
-        if (stunTime > 0f) {
+        if (stunTime > 0f)
+        {
             movement = Vector2.zero;
             return;
         }
@@ -228,9 +230,12 @@ public class PlayerCharacter : MonoBehaviour
         Vector2 delta = movement * speed;
         rigidBody.MovePosition(rigidBody.position + delta);
         animator.SetFloat("Speed", movement.magnitude);
-        if (!heldObject) {
+        if (!heldObject)
+        {
             animator.SetBool("Cat", false);
-        } else {
+        }
+        else
+        {
             animator.SetBool("Cat", heldObject.CompareTag("Cat"));
         }
         animator.SetBool("Stunned", stunTime > 0f);
