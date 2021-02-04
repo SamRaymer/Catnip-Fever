@@ -15,6 +15,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject DownBikePrefab;
     public GameObject SoccerPrefab;
     public GameObject WaterPrefab;
+    public GameObject hoseSpawnLocation;
 
     public GameObject EventSystem1;
     private PlayerStats Scoreboard;
@@ -28,12 +29,12 @@ public class SpawnManager : MonoBehaviour
     public float SoccerSprinkleStart = 10f;
     public float WaterStart = 1f;
 
-    private Vector3 LDBikeSpawn = new Vector3(-7.9f,20f,0f);
-    private Vector3 LUBikeSpawn = new Vector3(-7.63f,8f,0f);
-    private Vector3 DCarSpawn = new Vector3(-6.28f,20f,0f);
-    private Vector3 UCarSpawn = new Vector3(-5.03f,8f,0f);
-    private Vector3 RDBikeSpawn = new Vector3(-3.69f,20f,0f);
-    private Vector3 RUBikeSpawn = new Vector3(-3.34f,8f,0f);
+    private Vector3 LDBikeSpawn = new Vector3(-7.9f, 20f, 0f);
+    private Vector3 LUBikeSpawn = new Vector3(-7.63f, 8f, 0f);
+    private Vector3 DCarSpawn = new Vector3(-6.28f, 20f, 0f);
+    private Vector3 UCarSpawn = new Vector3(-5.03f, 8f, 0f);
+    private Vector3 RDBikeSpawn = new Vector3(-3.69f, 20f, 0f);
+    private Vector3 RUBikeSpawn = new Vector3(-3.34f, 8f, 0f);
 
     private float ParkboundL = -3f;
     private float ParkboundR = 6f;
@@ -61,8 +62,8 @@ public class SpawnManager : MonoBehaviour
     {
         NextLDBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
         NextLUBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
-        NextDCar =   Time.time + CarInterval * (1 + Random.Range(0, 1));
-        NextUCar =   Time.time + CarInterval * (1 + Random.Range(0, 1));
+        NextDCar = Time.time + CarInterval * (1 + Random.Range(0, 1));
+        NextUCar = Time.time + CarInterval * (1 + Random.Range(0, 1));
         NextRDBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
         NextRUBike = Time.time + BikeInterval * (1 + Random.Range(0, 1));
 
@@ -72,6 +73,7 @@ public class SpawnManager : MonoBehaviour
 
 
         EventSystem1 = GameObject.Find("EventSystem");
+        hoseSpawnLocation = GameObject.Find("Hose Spawn Location");
         Scoreboard = EventSystem1.GetComponent(typeof(PlayerStats)) as PlayerStats;
     }
 
@@ -112,7 +114,7 @@ public class SpawnManager : MonoBehaviour
         }
 
 
-        accelf = Mathf.Max(5 - Mathf.Floor( (Time.time - timeadjust) / 10), 1);
+        accelf = Mathf.Max(5 - Mathf.Floor((Time.time - timeadjust) / 10), 1);
 
         // Spawn bikes and cars
         if (Time.time > NextLDBike)
@@ -180,13 +182,15 @@ public class SpawnManager : MonoBehaviour
             behavoir.rotation = Random.Range(30f, 250f);
             behavoir.direction = Random.Range(0f, 360f);
             a.transform.Rotate(0f, 0f, Random.Range(0f, 360f));
-            behavoir.velocity = Random.Range(1f,4f);
+            behavoir.velocity = Random.Range(1f, 4f);
         }
 
         if (hoseSpawned == 0 && Scoreboard.catsReturned >= 3)
         {
             hoseSpawned = 1;
-            Instantiate(hosePrefab, new Vector2(5f,16f), new Quaternion(0f, 0f, 0f, 0f));
+            Vector3 spawnPosition = hoseSpawnLocation.transform.position;
+            Vector2 spawnPosition2D = new Vector2(spawnPosition.x, spawnPosition.y);
+            Instantiate(hosePrefab, spawnPosition2D, Quaternion.identity);
         }
     }
 }
