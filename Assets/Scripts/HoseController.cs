@@ -12,8 +12,11 @@ public class HoseController : MonoBehaviour
     public int maxCats = 20;
     public int spawnCount = 0;
     private Transform spawnPoint;
+    private Animator animator;
+    public int framesBeforeCatEmerges = 48;
+    private int shootingFrame = 41;
 
-    public GameObject[] catPrefabs = new GameObject[]{null, null, null};
+    public GameObject[] catPrefabs = new GameObject[] { null, null, null };
 
     void Start()
     {
@@ -21,6 +24,7 @@ public class HoseController : MonoBehaviour
         gameTimer = eventSystem.GetComponent<GameTimer>();
         spawnPoint = transform.GetChild(0);
         spawnPoint.GetComponent<SpriteRenderer>().enabled = false;
+        animator = GetComponent<Animator>();
     }
 
     void MakeCat(Vector3 position, Quaternion orientation)
@@ -34,11 +38,25 @@ public class HoseController : MonoBehaviour
     {
         if (spawnTimer <= 0f && GameObject.FindGameObjectsWithTag("Cat").Length < maxCats)
         {
-            MakeCat(spawnPoint.position, Quaternion.identity);
+            animator.SetTrigger("Shoot");
+            shootingFrame = 0;
             spawnTimer += secondsBetweenSpawns;
         }
 
-        if (spawnTimer > 0f && gameTimer.timerIsRunning) {
+        if (shootingFrame < framesBeforeCatEmerges)
+        {
+            Debug.Log(animator.GetCurrentAnimatorStateInfo(0).ToString() + animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Shooting"));
+            shootingFrame++;
+        }
+        if (shootingFrame == framesBeforeCatEmerges)
+        {
+            MakeCat(spawnPoint.position, Quaternion.identity);
+            shootingFrame++;
+        }
+
+
+        if (spawnTimer > 0f && gameTimer.timerIsRunning)
+        {
             spawnTimer -= Time.deltaTime;
         }
     }

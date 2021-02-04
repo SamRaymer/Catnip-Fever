@@ -460,6 +460,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196717105}
   m_CullTransparentMesh: 0
+--- !u!1 &252019590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 252019591}
+  m_Layer: 0
+  m_Name: Hose Spawn Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &252019591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252019590}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.0452037, y: 3.1774836, z: 24.68164}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 953698763}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &308163047
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,6 +2154,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!4 &953698763 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8487520575819740080, guid: 7009b56d08e72a648965ea3a88fbd1ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 8487520575309071154}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &994329278
 GameObject:
   m_ObjectHideFlags: 0
@@ -3761,6 +3797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catsReturned: 0
   theScoreText: {fileID: 352508613}
+  oldScore: 0
 --- !u!114 &1410588604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4912,5 +4949,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8487520575819740083, guid: 7009b56d08e72a648965ea3a88fbd1ab,
+        type: 3}
+      propertyPath: hoseSpawnLocation
+      value: 
+      objectReference: {fileID: 252019590}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7009b56d08e72a648965ea3a88fbd1ab, type: 3}

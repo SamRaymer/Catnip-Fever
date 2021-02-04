@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 467226268210731924}
   - component: {fileID: 467226268210731927}
   - component: {fileID: 467226268210731926}
+  - component: {fileID: -485998569517073156}
   m_Layer: 0
   m_Name: Hose
   m_TagString: Untagged
@@ -98,11 +99,32 @@ MonoBehaviour:
   eventSystem: {fileID: 0}
   secondsBetweenSpawns: 3
   spawnTimer: 0
+  maxCats: 20
   spawnCount: 0
+  framesBeforeCatEmerges: 64
   catPrefabs:
   - {fileID: 479529633301404175, guid: 03563f6711474d8489744c87e4ff91c1, type: 3}
   - {fileID: 181575757649362512, guid: 4f8b52aa7c62f49249167dab6fd153be, type: 3}
   - {fileID: 930584360480115639, guid: ec2118004f92746feb65f8ec6b4822f7, type: 3}
+--- !u!95 &-485998569517073156
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467226268210731921}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d78856b09afe50419e8658c1ebf6a86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6209128556671327214
 GameObject:
   m_ObjectHideFlags: 0
