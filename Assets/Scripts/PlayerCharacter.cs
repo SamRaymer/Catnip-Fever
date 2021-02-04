@@ -153,14 +153,22 @@ public class PlayerCharacter : MonoBehaviour
             scoreText.text = "Score: " + StaticClass.theScore;
         }
 
+        ResetCatAnimationTriggers();
+        Debug.Log("Dropped cat trigger gettin set!!");
+        animator.SetTrigger("Dropped Cat");
         heldObject = null;
     }
 
-    public void ResetAnimationTriggers()
+    public void ResetCatAnimationTriggers()
     {
         animator.ResetTrigger("Blue Cat");
         animator.ResetTrigger("Green Cat");
         animator.ResetTrigger("Pink Cat");
+    }
+
+    public void ResetCatlessAnimationTriggers()
+    {
+        animator.ResetTrigger("Dropped Cat");
     }
 
     public void HandleInteract()
@@ -184,6 +192,8 @@ public class PlayerCharacter : MonoBehaviour
         }
 
         heldObject = objectToPickUp;
+        ResetCatlessAnimationTriggers();
+
         CatController cat = heldObject.GetComponent<CatController>();
         switch (cat.color)
         {
